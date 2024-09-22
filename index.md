@@ -13,7 +13,7 @@ hero:
     - theme: alt
       text: API Examples
       link: /api-examples
-      - theme: brand
+    - theme: brand
       text: Lecture Notes
       link: /test.md
 
