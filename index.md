@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: API Examples
       link: /api-examples
+      - theme: brand
+      text: Lecture Notes
+      link: /test.md
 
 features:
   - title: Feature A
