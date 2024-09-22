@@ -1,6 +1,6 @@
 # 1. 半导体物理的一些理解
 ## 1.1 PN Junction
-理想二极管方程：$ J=J_s\left[\exp \left(\frac{e V_a}{k T}\right)-1\right] $
+理想二极管方程：$J=J_s\left[\exp \left(\frac{e V_a}{k T}\right)-1\right]$  
 齐纳击穿（Zener Breakdown） → 可恢复 → 隧穿 → BTBT
 雪崩击穿（Avalanche Breakdown） → 不可恢复 → 碰撞
 
