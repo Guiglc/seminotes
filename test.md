@@ -43,22 +43,22 @@ Tunneling, BTBT, GIDL, HCI
 Openshort test，通电流，应看到 0.7V。
 所以 CE Pin 在图中位置，芯片大部分时间是不工作的，通高压让电路关闭。
 
-![alt text](image-2.png)
+<!-- ![alt text](image-2.png) -->
 
 (需了解) 然后介绍了这个电路和 Snapback。
 
-![alt text](image-3.png)
+<!-- ![alt text](image-3.png) -->
 
 ### 2.1.2 Type II: Power Pin
 
-![alt text](image-5.png)
+<!-- ![alt text](image-5.png) -->
 
 当 VDD 有脉冲 15V 时，红圈处约 12V，对于下一个非门，效果就更好。在足够短的时间内将脉冲电压导走，也就是开启最后那个管子，三级保证了时间短。
 Powershort 测试 force 电流测电压，看到 0.7V 压降。 SPEC：0.2V ~ 2V。Powershort 的电压可以很低，保证没有管子打开，避免 Floating （例如 VCC 处为 0.2V）带来的瞬态电流过大，而这并不是 short。
 
 ### 2.1.3 Type III: HV Pin
 
-![alt text](image-6.png)
+<!-- ![alt text](image-6.png) -->
 
 ESD 电路需要抗各种频率，对于低频脉冲，当然希望降低 C，但是此情况下高频无法预防，所以 HV PIN 的 ESD 电路设计很难。
 
