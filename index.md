@@ -4,8 +4,7 @@ layout: home
 
 hero:
   name: "seminotes"
-  text: "seminote"
-  tagline: My great project tagline
+  tagline: Lecture notes
   actions:
     # - theme: brand
     #   text: Markdown Examples
