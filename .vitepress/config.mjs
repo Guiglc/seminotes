@@ -6,7 +6,7 @@ export default defineConfig({
     math: true
   },
   title: "HUMMER INDUSTRIES",
-  // base: '/seminotes/',
+  base: '/seminotes/',
   description: "seminote",
   appearance: true,
   themeConfig: {
