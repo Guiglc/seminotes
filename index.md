@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "seminotes"
-  tagline: Lecture notes
+  name: 'HUMMER INDUSTRIES'
+  # tagline: Lecture notes
   actions:
     # - theme: brand
     #   text: Markdown Examples
@@ -13,8 +13,8 @@ hero:
     #   text: API Examples
     #   link: /api-examples
     - theme: brand
-      text: Lecture Notes
-      link: /test.md
+      text: Ⅰ Seminotes
+      link: content/seminotes.md
 
 # features:
 #   - title: Feature A

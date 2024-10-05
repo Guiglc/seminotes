@@ -5,9 +5,10 @@ export default defineConfig({
   markdown: {
     math: true
   },
-  title: "seminotes",
-  base: '/seminotes/',
+  title: "HUMMER INDUSTRIES",
+  // base: '/seminotes/',
   description: "seminote",
+  appearance: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -20,7 +21,7 @@ export default defineConfig({
         items: [
           // { text: 'Markdown Examples', link: '/markdown-examples' },
           // { text: 'Runtime API Examples', link: '/api-examples' }
-          { text: 'Notes', link: '/test.md' }
+          { text: 'Seminotes', link: 'content/seminotes.md' }
         ]
       }
     ],

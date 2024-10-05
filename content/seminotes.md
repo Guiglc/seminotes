@@ -40,40 +40,39 @@ Tunneling, BTBT, GIDL, HCI
 高低频电路分界线：$>\frac{1}{10 \mathrm{ns}}$
 
 ## 2 Analog Circuit
-### 2.1 ESD Circuit
+### 2.1 ESD
 #### 2.1.1 Type I : Control and I/O Pin
 Openshort test，通电流，应看到 0.7V。
 所以 CE Pin 在图中位置，芯片大部分时间是不工作的，通高压让电路关闭。
 
-<div align = center><img src = ./img/image-2.png></div>
+<div align = center><img src = ../img/image-2.png></div>
 
 
 (需了解) 然后介绍了这个电路和 Snapback。
 
-<div align = center><img src = ./img/image-3.png></div>
+<div align = center><img src = ../img/image-3.png></div>
 
 #### 2.1.2 Type II: Power Pin
 
-<div align = center><img src = ./img/image-5.png></div>
+<div align = center><img src = ../img/image-5.png></div>
 
 当 VDD 有脉冲 15V 时，红圈处约 12V，对于下一个非门，效果就更好。在足够短的时间内将脉冲电压导走，也就是开启最后那个管子，三级保证了时间短。  
 Powershort 测试 force 电流测电压，看到 0.7V 压降。 SPEC：0.2V ~ 2V。Powershort 的电压可以很低，保证没有管子打开，避免 Floating （例如 VCC 处为 0.2V）带来的瞬态电流过大，而这并不是 short。  
 
 #### 2.1.3 Type III: HV Pin
 
-<div align = center><img src = ./img/image-6.png></div>
+<div align = center><img src = ../img/image-6.png></div>
 
 ESD 电路需要抗各种频率，对于低频脉冲，当然希望降低 C，但是此情况下高频无法预防，所以 HV PIN 的 ESD 电路设计很难。
 
-### 2.2 Analog Circuit
 
-#### 2.2.1 工作点 - 反相器
+### 2.2 工作点 - 反相器
 
-<div align = center><img src = ./img/2024-10-01-00-05-44.png></div>  
+<div align = center><img src = ../img/2024-10-01-00-05-44.png></div>  
 
 考虑上面这个电路的 $V_{in}$ - $V_{out}$ 曲线应如下：  
 
-<div align = center><img src = ./img/2024-10-01-00-16-26.png></div>
+<div align = center><img src = ../img/2024-10-01-00-16-26.png></div>
 
 $$ 
 V_{out}=\left\{
@@ -100,15 +99,15 @@ $$
 2. 非振荡电路发生震荡
 3. 振荡电路不震荡
 
-#### 2.2.2 放大器
+### 2.3 放大器
 
-#### 2.2.3 基准源
+### 2.4 基准源
 
-#### 2.2.4 Clock
+### 2.5 Clock
 
-#### 2.2.5 Charge Pump
+### 2.6 Charge Pump
 
-#### 2.2.6 数学
+### 2.7 数学
 
 ## 3 NAND
 
