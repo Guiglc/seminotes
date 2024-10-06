@@ -1,4 +1,7 @@
 # 半导体笔记
+
+## 0. 推荐书目
+
 ## 1. 半导体物理的一些理解
 ### 1.1 PN Junction
 理想二极管方程：$J=J_s\left[\exp \left(\frac{e V_a}{k T}\right)-1\right]$  
@@ -20,11 +23,14 @@ $K_n=\left(W \mu_n C_{\mathrm{ox}}\right) / 2 L=\left(k_n^{\prime} / 2\right) \c
 
 **饱和区电流公式：**
 $$I_D=\frac{W \mu_n C_{\mathrm{ox}}}{2 L}\left(V_{G S}-V_T\right)^2$$
-Source 和 Drain 之间的饱和电压：
-$V_{D S}(\mathrm{sat})=V_{G S}-V_T$
+Source 和 Drain 之间的饱和电压：$V_{D S}(\mathrm{sat})=V_{G S}-V_T$
 
 ### 1.3 MOSFET 的十个寄生效应 
-（之后补充以下所有效应的具体公式）
+
+::: danger
+之后补充以下所有效应的具体公式
+:::
+
 #### 1.3.1 Long Channel
 Body Effect, Pinch Off, Saturation
 
@@ -47,12 +53,14 @@ Openshort test，通电流，应看到 0.7V。
 
 <div align = center><img src = ../img/image-2.png></div>
 
-
-(需了解) 然后介绍了这个电路和 Snapback。
-
+::: danger
+然后介绍了这个电路和 Snapback。
 <div align = center><img src = ../img/image-3.png></div>
+:::
 
 #### 2.1.2 Type II: Power Pin
+
+&nbsp;
 
 <div align = center><img src = ../img/image-5.png></div>
 
@@ -99,15 +107,76 @@ $$
 2. 非振荡电路发生震荡
 3. 振荡电路不震荡
 
-### 2.3 放大器
+### 2.3 Amplifier
 
-### 2.4 基准源
+#### 2.3.1 两种放大器
+
+&nbsp;
+<div align = center><img src = ../img/2024-10-06-11-38-46.png /></div>
+
+实际中很难应用差分放大器，因为取反信号很难得到。
+差分放大器干掉同向毛刺，滤波器干掉最原始的的单信号的毛刺。
+
+#### 2.3.2 运算放大器
+
+<div align = center><img src = ../img/2024-10-06-11-49-41.png /></div>
+
+$$
+\begin{align*}
+&V_{N1} \uparrow \quad \rightarrow \quad I_{N1} \uparrow \quad \rightarrow \quad V_{1} \downarrow \quad \rightarrow \quad I_{P2} \uparrow (V_{G\_P2}\uparrow) \quad \rightarrow \quad V_{OUT} \uparrow \\
+此时，&V_{N2} \uparrow \quad \rightarrow \quad I_{N2} \uparrow \quad \rightarrow \quad V_{OUT} \downarrow \\
+最终，&V_{OUT} \space \cancel\Delta
+\end{align*}
+$$
+
+<div align = center><img src = ../img/2024-10-06-12-09-11.png /></div>
+
+虚短：$V_{IN}^+ \approx V_{IN}^-, \space \Delta V \approx 0$  
+虚断：$I_{IN}^+ \approx I_{IN}^- \approx 0, \space A \space 无穷大(>100)$  
+
+#### 2.3.3 LDO
+
+**不带负载：**
+<div align = center><img src = ../img/2024-10-06-12-30-20.png /></div>
+
+$$
+\begin{align*}
+I_{R_1} &= \frac{V_{ref}}{R_1} \\
+V_{R_2} &= I_{R_1}  R_2 = \frac{R_2}{R_1}V_{ref} \\
+V_{out} &= V_{ref} + \frac{R_2}{R_1}V_{ref} = \frac{R_1 + R_2}{R_1}V_{ref}
+\end{align*}
+$$
+
+**带负载：**
+
+<div align = center><img src = ../img/2024-10-06-12-50-36.png /></div>
+
+如何带负载，会让 $V_{IN}^+$ 下降（因为负载线路分流），由于 $V_{IN}^+$ 和 $V_{OUT}^-$ 反向，所以 N 管更开，增大电流以补足，使 P 处电压回归原位。  
+**N 管 or P 管**：如果用 N 管，$V_{OUT} < V_{IN} - V_{T}$，似乎有损失；如果用 P 管，$V_{CC}$ 的抖动会传递到 $V_{OUT}$ 上，也就是要防止电源纹波。  
+**TRIM:**
+$$
+\begin{align*}
+&\text{Trim} \quad V_{DD1} \space \rightarrow \space 1.2\text{V} \\
+&\text{Trim} \quad V_{DD2} \space \rightarrow \space 2.4\sim 2.5\text{V} \space (3.3\text{V} - V_T) \\
+&V_{OUT} = \dfrac{1.2}{R_1}(R_1 + R_2) \xlongequal{R_2 = 2R_1} 3.6\text{V}
+\end{align*}
+$$
+
+LDO 能耗高，轻电源不太能用，精准。  
+DCDC 不耗能，只有电感电容。（新能源汽车动能回收？）  
+
+::: danger
+1. 需继续了解 LDO 和 DCDC
+2. 运算放大器正负符号确定
+:::
+
+### 2.4 Voltage Reference
 
 ### 2.5 Clock
 
 ### 2.6 Charge Pump
 
-### 2.7 数学
+### 2.7 Math
 
 ## 3 NAND
 

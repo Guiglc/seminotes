@@ -6,9 +6,9 @@ hero:
   name: 'HUMMER INDUSTRIES'
   # tagline: Lecture notes
   actions:
-    # - theme: brand
-    #   text: Markdown Examples
-    #   link: /markdown-examples
+    - theme: brand
+      text: Markdown Examples
+      link: /markdown-examples
     # - theme: alt
     #   text: API Examples
     #   link: /api-examples
