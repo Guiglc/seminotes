@@ -41,6 +41,13 @@ Short Channel Effect, DIBL, PuchThrough
 Tunneling, BTBT, GIDL, HCI  
 (BTBT, GIDL: 从 Id-Vg Curve 能看出来，从 Is-Vg Curve 看不出来)
 
+##### 1.3.2 Other Effect
+
+REF: https://www.bilibili.com/video/BV18spre7E7u/
+
+<div align = center><img src = ../img/2024-10-06-15-15-15.png width = 300/></div>
+<div align = center><img src = ../img/2024-10-06-15-15-49.png width = 500/></div>
+
 ### 1.4 Note
 弛豫现象：待补充
 高低频电路分界线：$>\frac{1}{10 \mathrm{ns}}$
@@ -114,8 +121,8 @@ $$
 &nbsp;
 <div align = center><img src = ../img/2024-10-06-11-38-46.png /></div>
 
-实际中很难应用差分放大器，因为取反信号很难得到。
-差分放大器干掉同向毛刺，滤波器干掉最原始的的单信号的毛刺。
+实际中很难应用差分放大器，因为取反信号很难得到。  
+差分放大器干掉同向毛刺，滤波器干掉最原始的的单信号的毛刺。  
 
 #### 2.3.2 运算放大器
 
@@ -171,12 +178,98 @@ DCDC 不耗能，只有电感电容。（新能源汽车动能回收？）
 :::
 
 ### 2.4 Voltage Reference
+#### 2.4.1 Current Mirror
+
+电源很难做到和 V，T 完全无关，那么：
+1. 威尔逊电流源 → 与 V 无关
+2. Bandgap → 与 T 无关
+<div align = center><img src = ../img/2024-10-06-22-22-11.png /></div>
+#### 2.4.2 Wilson Current Mirror
+<div align = center><img src = ../img/2024-10-06-20-47-16.png /></div>
+
+**$V_1$ 可以不等于 $V_2$：**
+$V_1 < V_2$， 四管饱和，此时：  
+$$\dfrac{1}{2}\mu_NC_{OX}\dfrac{W_N}{L_N}\left(V_1-V_{T(N)}\right)^2 = \dfrac{1}{2}\mu_PC_{OX}\dfrac{W_P}{L_P}\left(V_2- V_{DD}- V_{T(P)}\right)^2$$
+
+::: danger
+$V_1 < V_2$，未探讨，待补充。
+:::
+
+<div align = center><img src = ../img/2024-10-06-21-07-20.png /></div>
+
+$$
+\begin{align*}
+I_1 &= I_2 \\
+V_{GS1} &= V_{G2} \\
+I_1 &= \dfrac{1}{2}\mu C_{OX}\dfrac{W}{L}\left(V_{GS1}-V_{T}\right)^2 \\
+I_2 &= \dfrac{1}{2}\mu C_{OX}\dfrac{\color{red}N\color{black}W}{L}\left(V_{G2}-I_2R_2-V_T\right)^2 \\
+&（红色\space N\space 表示可并联多组\space\text{NMOS}）\\
+令 \space  \dfrac{1}{2}\mu C_{OX}\dfrac{W}{L} = A^2, \space 则：\\
+I & = A^2(V_g-V_t)^2 \\
+V_g &= V_t + \dfrac{\sqrt{I}}{A}\\
+V_g &= V_t + IR + \dfrac{\sqrt{I}}{A\sqrt{N}}\\
+忽略体效应，可以消掉 \space V_t:\\
+\dfrac{\sqrt{I}}{A} &= IR + \dfrac{\sqrt{I}}{A\sqrt{N}}
+\end{align*}
+$$
+
+当电流镜工作时：
+$$
+\begin{align*}
+&\Delta V \uparrow: \\
+& 1. \space I_{P1} \uparrow \quad \rightarrow V_{GS} \uparrow \quad \rightarrow \quad I_{N2} \uparrow \\
+& 2. \space I_{P2} \uparrow \quad \rightarrow IR \uparrow \quad \rightarrow \quad V_{GS} \downarrow \quad \rightarrow \quad I_{N2} \downarrow \\
+&总体上，I\space 不变
+\end{align*}
+$$
+
+#### 2.4.3 Bandgap
+<div align = center><img src = ../img/2024-10-06-22-04-57.png /></div>
+
+对于上图电路：
+$$
+\begin{align*}
+I &= I_s(e^{\frac{qV}{kT}}-1) = I_s e^{\frac{qV}{kT}} \xlongequal{令\space V_T = \frac{VT}{q}} I_se^{\frac{V}{V_T}}\\
+V &= V_T\ln{\frac{I}{I_s}} \\
+V_T &= V_1\ln{\frac{I}{I_s}} \\
+V_2 &= V_T\dfrac{I}{mI_s}\\
+V_R &= V_1 - V_2 = V_T\ln\dfrac{1}{m} = -V_T\ln m\\
+I_R &= \dfrac{V_T\ln m}{R_1} \\
+V_{R2} &= \dfrac{V_T\ln m}{R_1} \cdot R_2 = \dfrac{kT}{q}\ln m \dfrac{R_2}{R_1}
+\end{align*}\\
+$$
+
+::: danger
+这里的推导不太能看懂，m是分流系数？
+:::
+
+此时，$V_{R2}$ 只跟温度有关且十分线性，可以做温度传感器。
+
+使 $\dfrac{\partial V_{R2}}{\partial T}+\dfrac{\partial V_{VE}}{\partial T}=0$，即 $-\dfrac{R_2}{R_1}\ln m \dfrac{k}{q}+\dfrac{\partial V_{VE}}{\partial T}=0$，则存在二阶效应，因此有第二代 Bandgap 如下图。
+
+<div align = center><img src = ../img/2024-10-06-22-19-37.png /></div>
 
 ### 2.5 Clock
+
+开始介绍了环形振荡器。（待补充）
+常见晶振频率：26MHz, 32MHz。
+
+<div align = center><img src = ../img/2024-10-06-23-08-05.png /></div>
+
+总体的效果是，芯片内部的 Clock 一直在追赶晶振 Clock。
 
 ### 2.6 Charge Pump
 
 ### 2.7 Math
+
+### 2.8 Other
+#### 2.8.1 模拟信号转数字信号
+
+<div align = center><img src = ../img/2024-10-06-23-15-33.png /></div>
+
+#### 2.8.2 串口转并口
+NAND 内部很慢，但一口气并行就能匹配 CPU 的高频率。
+<div align = center><img src = ../img/2024-10-06-23-12-47.png /></div>
 
 ## 3 NAND
 
