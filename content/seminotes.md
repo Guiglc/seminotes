@@ -25,6 +25,10 @@ $K_n=\left(W \mu_n C_{\mathrm{ox}}\right) / 2 L=\left(k_n^{\prime} / 2\right) \c
 $$I_D=\frac{W \mu_n C_{\mathrm{ox}}}{2 L}\left(V_{G S}-V_T\right)^2$$
 Source 和 Drain 之间的饱和电压：$V_{D S}(\mathrm{sat})=V_{G S}-V_T$
 
+::: danger
+待修改公式为容易理解的形式。
+:::
+
 ### 1.3 MOSFET 的十个寄生效应 
 
 ::: danger
@@ -250,7 +254,7 @@ $$
 <div align = center><img src = ../img/2024-10-06-22-19-37.png /></div>
 
 ::: danger
-补充 $I_BE$ 和 $I_PTAT$ 的内容。
+补充 $I_{BE}$ 和 $I_{PTAT}$ 的内容。
 :::
 
 ### 2.5 Clock
