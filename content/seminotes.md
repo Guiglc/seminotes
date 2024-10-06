@@ -249,9 +249,16 @@ $$
 
 <div align = center><img src = ../img/2024-10-06-22-19-37.png /></div>
 
+::: danger
+补充 $I_BE$ 和 $I_PTAT$ 的内容。
+:::
+
 ### 2.5 Clock
 
-开始介绍了环形振荡器。（待补充）
+::: danger
+开始介绍了环形振荡器。（待补充）  
+:::
+
 常见晶振频率：26MHz, 32MHz。
 
 <div align = center><img src = ../img/2024-10-06-23-08-05.png /></div>
@@ -270,6 +277,10 @@ $$
 #### 2.8.2 串口转并口
 NAND 内部很慢，但一口气并行就能匹配 CPU 的高频率。
 <div align = center><img src = ../img/2024-10-06-23-12-47.png /></div>
+
+::: danger
+不太理解这个电路。
+:::
 
 ## 3 NAND
 
