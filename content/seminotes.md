@@ -38,14 +38,14 @@ Source 和 Drain 之间的饱和电压：$V_{D S}(\mathrm{sat})=V_{G S}-V_T$
 #### 1.3.1 Long Channel
 Body Effect, Pinch Off, Saturation
 
-#### 1.3.1 Avoid
+#### 1.3.2 Avoid
 Short Channel Effect, DIBL, PuchThrough
 
-#### 1.3.1 Parasite Effect
+#### 1.3.3 Parasite Effect
 Tunneling, BTBT, GIDL, HCI  
 (BTBT, GIDL: 从 Id-Vg Curve 能看出来，从 Is-Vg Curve 看不出来)
 
-##### 1.3.2 Other Effect
+##### 1.3.4 Other Effect
 
 REF: https://www.bilibili.com/video/BV18spre7E7u/
 
@@ -53,8 +53,11 @@ REF: https://www.bilibili.com/video/BV18spre7E7u/
 <div align = center><img src = ../img/2024-10-06-15-15-49.png width = 500/></div>
 
 ### 1.4 Note
-弛豫现象：待补充
 高低频电路分界线：$>\frac{1}{10 \mathrm{ns}}$
+
+::: danger
+弛豫现象：待补充  
+:::
 
 ## 2 Analog Circuit
 ### 2.1 ESD
@@ -122,8 +125,8 @@ $$
 
 #### 2.3.1 两种放大器
 
-&nbsp;
-<div align = center><img src = ../img/2024-10-06-11-38-46.png /></div>
+
+<div align = center><img src = ../img/2024-10-07-13-35-03.png width = 700/></div>
 
 实际中很难应用差分放大器，因为取反信号很难得到。  
 差分放大器干掉同向毛刺，滤波器干掉最原始的的单信号的毛刺。  
@@ -270,23 +273,94 @@ $$
 总体的效果是，芯片内部的 Clock 一直在追赶晶振 Clock。
 
 ### 2.6 Charge Pump
+<div align = center><img src = ../img/2024-10-07-13-06-30.png /></div>
+
+电容充电抬高电势，然后断开前面的开关，闭合后面的开关，将电压传过去，此时后面电容对应的节点是低电平。
+
+<div align = center><img src = ../img/2024-10-07-13-11-45.png width = 500/></div>
+<div align = center><img src = ../img/2024-10-07-13-15-26.png width = 500/></div>
+
+$$
+\begin{align*}
+&对状态1：左边 \space u = V_m \cdot C \quad  右边 \space u^\prime = V_n \cdot C \\
+&对状态2：\space u = (V_{n+1} - V_\text{CLK})\cdot C + V_{n+1} \cdot C \\
+因此，&V_m + V_n = V_{n+1}-V_\text{CLK} + V_{n+1}& \\
+&2V_{n+1} = V_m + V_n+ V_\text{CLK}& \\
+当\space n \rightarrow \infty \space 时，& V_n = V_m + V_\text{CLK}
+\end{align*}\\
+$$
+
+但在实际电路中没有理想开关，所以只有如下电路：
+
+<div align = center><img src = ../img/2024-10-07-13-34-29.png width = 500/></div>
+
+$$
+\begin{align*}
+&对状态1：左边 \space u = V_m \cdot C \quad  右边 \space u^\prime = V_n \cdot C \\
+&对状态2：u = (V_{n+1} + V_t- V_\text{CLK})\cdot C + V_{n+1} \cdot C \\
+因此，&V_m + V_n = V_{n+1} + V_t -V_\text{CLK} + V_{n+1}& \\
+&2V_{n+1} = V_m + V_n+ V_\text{CLK} - V_t \\
+当\space n \rightarrow \infty \space 时，& V_n = V_m + V_\text{CLK} - V_t
+\end{align*}\\
+$$
+
+Charge Pump 中的所有管子必中 Body Effect, 所以：
+
+$$
+当\space n \rightarrow \infty \space 时， V_n = V_m + V_\text{CLK} - V_t - V_\text{body\_effect}
+$$
+
+::: danger
+因此，Charge Pump 用 HVZ 管，后面就换了(需理解)。
+<div align = center><img src = ../img/2024-10-07-13-50-13.png width = 500/></div>
+:::
+
+#### 2.6.1 Charge Pump and Clock
+<div align = center><img src = ../img/2024-10-07-13-57-57.png width = 500/></div>
+
+| **Control A** | **Signal In B** | **Signal Out C** |
+| :-----------: | :-------------: | :--------------: |
+|       0       |        0        |        1         |
+|       0       |        1        |        1         |
+|       1       |        0        |        1         |
+|       1       |        1        |        0         |
+
+即 $ C = \overline B = \overline{\text{CLK}} $，负载多了就打开 Clock，负载少了就关掉。
+
+<div align = center><img src = ../img/2024-10-07-14-35-35.png width = 500/></div>
+
+管子的最高工作电压 ~30V，实际只能传 25.5V，这决定了 NAND Program 电压的极限。
 
 ### 2.7 Math
+
+卷积，拉式变换，冲激函数，零点极点图。
+在冲激函数下，输出时系统的响应。
+对零点极点问题，即是让系统快速收敛。
+相位裕度，让系统不震荡的情况下，有多少 margin，业标：$ > 45^\circ $。
 
 ### 2.8 Other
 #### 2.8.1 模拟信号转数字信号
 
-<div align = center><img src = ../img/2024-10-06-23-15-33.png /></div>
+<div align = center><img src = ../img/2024-10-06-23-15-33.png width = 200/></div>
 
 #### 2.8.2 串口转并口
 NAND 内部很慢，但一口气并行就能匹配 CPU 的高频率。
-<div align = center><img src = ../img/2024-10-06-23-12-47.png /></div>
+<div align = center><img src = ../img/2024-10-06-23-12-47.png width = 400/></div>
 
 ::: danger
 不太理解这个电路。
 :::
 
 ## 3 NAND
+
+业标：$GCR > 65%$。
+$V_\text{PassR} = 6.5 \sim 7\text{V}，由于 \space  V_g - V_t \geq 1.5V，所以 \space Cell \space 的  \space V_t \space  最高只能 \space  5 \sim 5.5 \text{V}$。
+
+::: danger
+然后介绍了 Voltage Sensing 到 Current Sensing。
+:::
+
+UVVt 是 UV 光照了之后的 Vt。
 
 ## 4 SRAM
 
