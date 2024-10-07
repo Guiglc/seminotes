@@ -311,8 +311,8 @@ $$
 $$
 
 ::: danger
-因此，Charge Pump 用 HVZ 管，后面就换了(需理解)。
-<div align = center><img src = ../img/2024-10-07-13-50-13.png width = 500/></div>
+因此，Charge Pump 用 HVZ 管，后面就换了（需理解）。
+<div align = center><img src = ../img/2024-10-07-14-59-37.png width = 500/></div>
 :::
 
 #### 2.6.1 Charge Pump and Clock
@@ -325,7 +325,7 @@ $$
 |       1       |        0        |        1         |
 |       1       |        1        |        0         |
 
-即 $ C = \overline B = \overline{\text{CLK}} $，负载多了就打开 Clock，负载少了就关掉。
+即 $C = \overline B = \overline{\text{CLK}}$，负载多了就打开 Clock，负载少了就关掉。
 
 <div align = center><img src = ../img/2024-10-07-14-35-35.png width = 500/></div>
 
@@ -333,10 +333,10 @@ $$
 
 ### 2.7 Math
 
-卷积，拉式变换，冲激函数，零点极点图。
-在冲激函数下，输出时系统的响应。
-对零点极点问题，即是让系统快速收敛。
-相位裕度，让系统不震荡的情况下，有多少 margin，业标：$ > 45^\circ $。
+卷积，拉式变换，冲激函数，零点极点图。  
+在冲激函数下，输出时系统的响应。  
+对零点极点问题，即是让系统快速收敛。  
+相位裕度，让系统不震荡的情况下，有多少 margin，业标：$> 45^\circ$。
 
 ### 2.8 Other
 #### 2.8.1 模拟信号转数字信号
