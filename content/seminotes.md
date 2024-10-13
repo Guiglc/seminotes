@@ -318,12 +318,28 @@ $$
 #### 2.6.1 Charge Pump and Clock
 <div align = center><img src = ../img/2024-10-07-13-57-57.png width = 500/></div>
 
+<style>
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<p align="center"><font face="黑体" size=2.>表1 Truth Table</font></p>
+
+<div class="center">
+
 | **Control A** | **Signal In B** | **Signal Out C** |
 | :-----------: | :-------------: | :--------------: |
 |       0       |        0        |        1         |
 |       0       |        1        |        1         |
 |       1       |        0        |        1         |
 |       1       |        1        |        0         |
+
+</div>
 
 即 $C = \overline B = \overline{\text{CLK}}$，负载多了就打开 Clock，负载少了就关掉。
 
@@ -353,7 +369,13 @@ NAND 内部很慢，但一口气并行就能匹配 CPU 的高频率。
 
 ## 3 NAND
 
-业标：$GCR > 65%$。
+::: danger
+Memory 发展史：
+:::
+
+Memory 的核心是结构。
+
+业标：$\text{GCR} > 65%$。
 $V_\text{PassR} = 6.5 \sim 7\text{V}，由于 \space  V_g - V_t \geq 1.5V，所以 \space Cell \space 的  \space V_t \space  最高只能 \space  5 \sim 5.5 \text{V}$。
 
 ::: danger
@@ -364,7 +386,66 @@ UVVt 是 UV 光照了之后的 Vt。
 
 ## 4 SRAM
 
+<div align = center><img src = ../img/2024-10-13-22-35-55.png width = 400/></div>
+
+写：左 0，右 1。  
+读：左 $\dfrac{1}{2}V_{\text{DD}}$，右 $\dfrac{1}{2}V_{\text{DD}}$ 或者两边都 $V_{\text{DD}}$ 。
+
+为了保证 Read 的时候不发生翻转，需要保证 $V_{\text{Read}}<0.7\text{V}$，即小于右 N 管的 $V_t$。
+$$
+\begin{align*}
+I_\text{PD}(0.7\text V) &> I_\text{PD}(\text{Source} = 0.7\text V) \\
+\dfrac{1}{2}\mu C_{\text{ox}}\left(\dfrac{W}{L}\right)_\text{PD} \left(V_{G}-V_t+\frac{1}{2}V_{DD}\right)V_\text{DD} &> \dfrac{1}{2}\mu C_{\text{ox}}\left(\dfrac{W}{L}\right)_\text{PG} \left(V_{G}-0.7\text V - V_T \right)^2
+\end{align*}
+$$ 
+
+由此： 
+$$
+\begin{align*}
+&\beta \text{ Ratio} : \dfrac{\left(\dfrac{W}{L}\right)_\text{PD}}{\left(\dfrac{W}{L}\right)_\text{PG}} > \beta ，用以保证 \text{ Read } 的时候不发生翻转 \\
+&\gamma \text{ Ratio} : 保证 \text{ Program } 的时候不翻转
+\end{align*}
+$$
+
+SRAM 由于可能有 Read Failure, 所以需要 6N 和 8N 测试，保证没有读翻转：  
+* W0 R0，W1 R1，W0 R0  
+* W0 R0 R0, W1 R1 R1，W0 R0 R0  
+
+::: tip
+然后谈论了高速 I/O 的测试 Pattern。  
+:::
+
+SRAM 可以评估 Process 的 Uniformity, Logic 的测试器件就是 SRAM。  
+SRAM 的良率是 90%，那么 Logic 可以达到 95%（SRAM 比较密，Logic 的密度一般是它的1/2，defect 密度也为 1/2）。  
+
+Butterfly Curve 可以缩放，即减小电压，此时 SNM 变小，也就是说可以用小 $V_\text{CC}$ 测 Uniformity。  
+
+<div align = center><img src = ../img/2024-10-13-22-35-27.png width = 500/></div>
+
+
+<style>
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<p align="center"><font face="黑体" size=2.>表2 不同 VCC 下 90% 良率对应阶段</font></p>
+
+<div class="center">
+
+| Yield | $V_\text{CC}$ Level | 对应阶段 |
+| :---: | :-----------------: | :------: |
+|  90%  |    $V_\text{CC}$    |   研发   |
+|  90%  |  0.9$V_\text{CC}$   |  试量产  |
+|  90%  |  0.8$V_\text{CC}$   |   量产   |
+|  90%  |  0.7$V_\text{CC}$   |   TSMC   |
+
+</div>
+
 ## 5 DRAM
 
 ## 6 Logic Circuit
-
