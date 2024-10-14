@@ -275,10 +275,10 @@ $$
 ### 2.6 Charge Pump
 <div align = center><img src = ../img/2024-10-07-13-06-30.png /></div>
 
-电容充电抬高电势，然后断开前面的开关，闭合后面的开关，将电压传过去，此时后面电容对应的节点是低电平。
+电容充电抬高电势，然后断开前面的开关，闭合后面的开关，将电压传过去，此时后面电容对应的节点是低电平。  
 
-<div align = center><img src = ../img/2024-10-07-13-11-45.png width = 500/></div>
-<div align = center><img src = ../img/2024-10-07-13-15-26.png width = 500/></div>
+<div align = center><img src = ../img/2024-10-07-13-11-45.png width=500/></div>
+<div align = center><img src = ../img/2024-10-07-13-15-26.png width=500/></div>
 
 $$
 \begin{align*}
@@ -448,4 +448,56 @@ Butterfly Curve 可以缩放，即减小电压，此时 SNM 变小，也就是�
 
 ## 5 DRAM
 
+::: danger
+什么是验 Scramble？
+:::
+
+DRAM RD 时 BL 电压: 0V (看升不升)，$V_\text{DD}$(看放不放电)，$\dfrac{1}{2}V_\text{DD}$（看往哪边拉）
+电容的另一端接 0V，$V_\text{DD}$，$\dfrac{1}{2}V_\text{DD}$ 都可以，一般选择 0V 或者 $\dfrac{1}{2}V_\text{DD}$。
+
+**DRAM 的几个难点：**
+1. C 使用 $\dfrac{1}{2}V_\text{DD}$， $C=\dfrac{\epsilon S}{4\pi kd}, 而 Q=CV$，介电层要越做越薄（只能改变 d），然后用 $\dfrac{1}{2}V_\text{DD}$ 来降低隧穿。
+2. DRAM 中有几处电容，$C_\text{BL}$ 和 $C_\text S$：$C_\text{BL}$ 很大而 $C_\text S$ 很小，那 BL 可能用 0.55V 升到 0.6V 左右，Margin 很小。  
+$$
+\begin{align*}
+\dfrac{1}{2}V_\text{DD}\cdot C_\text{BL} + C_\text S \cdot V_\text{DD} &= V_x(C_\text{BL} + C_\text S)\\
+V_x &= \dfrac{\dfrac{1}{2}V_\text{DD}C_\text{BL}+V_\text{DD}}{C_\text{BL} + C_\text S}\\
+\text{If} \space V_\text{DD} = 0, \\
+V_x &= \dfrac{1}{2}V_\text{DD}\dfrac{C_\text{BL}}{C_\text{BL} + C_\text S}\\
+\end{align*}
+$$
+3. 有 MOS 管的情况下，就会有 $I_\text{Off}$，电容就漏电，因此要求 $I_\text{Off}$ 做到 $10^{-14}$ 量级，然而Nanoprobe 只能做到 $10^{-12}$。
+4. DRAM 放大器要求必须高度统一。（BL 版图很多 Dummy）  
+5. BL Noise: ① CHANNEL 不能漏电。② GIDL 也不能漏电。C 是否体，不怕 GIDL 怕 CHANNEL LEAKAGE，Bulk 可以灌电压。无非是反过来，都是怕 GIDL。X 使用了 Dual Gate（一个 Gate 拆成 Poly 和 W），功函数不一样，结变缓，隧穿降低。  
+6. 写 “1” 比写 “0” 难，前者是 $V_g-V_S-V_t$，后者是 $V_g-V_t$，因此前者相比后者电流小。  
+   
+
+<style>
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<div class="center">
+<p align="center"><font face="黑体" size=2.>表3 DRAM 的 HT 和 LT</font></p>
+
+|                LT                |               HT                |
+| :------------------------------: | :-----------------------------: |
+| $I_\text{Off} \space \checkmark$ |  $I_\text{Off} \space \times$   |
+|   $I_\text{ON} \space \times$    | $I_\text{ON} \space \checkmark$ |
+
+</div>
+
+::: danger
+确认表格正确性
+:::
+
+**因此，对于 DRAM 的要求：**
+1. Universal Curve 要大。
+2. 整个器件 $I_\text{Off}$ 和 $I_\text{ON}$ 的 distribution 都小，5 sigma 之内不 Fail。现在卡在 $I_\text{Off}$ 的展宽降不下来，GIDL 引起，没有很好的办法。  
+
 ## 6 Logic Circuit
+
