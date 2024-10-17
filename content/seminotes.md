@@ -370,12 +370,13 @@ NAND 内部很慢，但一口气并行就能匹配 CPU 的高频率。
 ## 3 NAND
 
 ::: danger
+Memory 的核心是结构。
 Memory 发展史：
 :::
 
-Memory 的核心是结构。
+NAND 最核心的参数：$T_\text{OX}$ 厚度，Couple Ratio（$\dfrac{\Delta V_g}{\Delta V_t } \geq 85%$）
 
-业标：$\text{GCR} > 65%$。
+
 $V_\text{PassR} = 6.5 \sim 7\text{V}，由于 \space  V_g - V_t \geq 1.5V，所以 \space Cell \space 的  \space V_t \space  最高只能 \space  5 \sim 5.5 \text{V}$。
 
 ::: danger
