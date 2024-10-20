@@ -374,8 +374,29 @@ Memory 的核心是结构。
 Memory 发展史：
 :::
 
-NAND 最核心的参数：$T_\text{OX}$ 厚度，Couple Ratio（$\dfrac{\Delta V_g}{\Delta V_t } \geq 85%$）
+NAND 最核心的参数：$T_\text{OX}$ 厚度，Couple Ratio （GCR > 65%）。  
+VGVT的业标:（$\dfrac{\Delta V_g}{\Delta V_t } \geq 85%$）  
 
+3BL 技术的重点是一次充电做了两次 Verify，而不是减少了一次 PGM。因此要求 Cell 工作在线性区，保证能根据一定的 Verify 时间后，得到通过的电流是高于 $V_PV$ 的 Cell 的 $\alpha$ 倍，若其倍数 <2, 则 $V_t$ 低于 PV 一个区间。因此必须保证 $V_g - V_t$ 和通过的电流为线性。  
+
+几个效应：
+1. PVS: $\left[\dfrac{W_{PVS}}{W}\right] +1$
+2. CD/CDU: CD uniformity
+3. Striation: 毛刺
+4. Distortion：椭圆
+5. Tilting：CH 斜了
+6. Background Pattern(SS)
+7. IVS: 由 SION 抓住电子所带来的 3eV 并不能稳定获得
+8. Coupling: Program 之后，每层 WL cover 的区域变小了，$V_t\uparrow$
+9. RTN
+
+::: Tips
+探讨了 PGM 应该从上往下还是从下往上：  
+从下往上 PGM，下面的 Cell 受到更大的 disturb。(需理解)  
+从上往下 PGM，只影响 E0，但是会隔绝 CH 电流，因为电子从 BL 来。  
+Single Deck：从上往下。  
+Double Deck: 从下往上，因为 deck 接头处隔绝电流太强。  
+:::
 
 $V_\text{PassR} = 6.5 \sim 7\text{V}，由于 \space  V_g - V_t \geq 1.5V，所以 \space Cell \space 的  \space V_t \space  最高只能 \space  5 \sim 5.5 \text{V}$。
 
