@@ -21,7 +21,8 @@ export default defineConfig({
         items: [
           // { text: 'Markdown Examples', link: '/markdown-examples' },
           // { text: 'Runtime API Examples', link: '/api-examples' }
-          { text: 'Seminotes', link: 'content/seminotes.md' }
+          { text: 'Seminotes', link: 'content/seminotes.md' },
+          { text: 'Statistics', link: 'content/statistics.md' }
         ]
       }
     ],

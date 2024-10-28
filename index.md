@@ -15,6 +15,9 @@ hero:
     - theme: brand
       text: Ⅰ Seminotes
       link: content/seminotes.md
+    - theme: brand
+      text: Ⅱ Statistics
+      link: content/statistics.md
 
 # features:
 #   - title: Feature A
