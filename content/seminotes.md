@@ -1,6 +1,16 @@
 # 半导体笔记
 
 ## 0. 推荐书目
+1.《半导体物理与器件》--- 施敏
+2.《固体物理》 --- 黄昆
+3.《CMOS模拟电路设计》--- 拉扎维 和 Abidi 发表的论文
+4. RF 射频电路设计
+5. logic 电路设计 --- 有 SRAM 即可
+6. 《Inside NAND Flash Memory》
+7. 信息论
+8. 自动控制原理 --- 会一种
+9. 半导体可靠性评估
+10. Fundamental Digital Test
 
 ## 1. 半导体物理的一些理解
 ### 1.1 PN Junction
