@@ -101,7 +101,7 @@ Butterfly Curve 可以缩放，即减小电压，此时 SNM 变小，也就是�
 
 </div>
 
-## 3.DRAM
+## 3. DRAM
 
 ::: danger
 什么是验 Scramble？
@@ -123,7 +123,7 @@ V_x &= \dfrac{1}{2}V_\text{DD}\dfrac{C_\text{BL}}{C_\text{BL} + C_\text S}\\
 $$
 3. 有 MOS 管的情况下，就会有 $I_\text{Off}$，电容就漏电，因此要求 $I_\text{Off}$ 做到 $10^{-14}$ 量级，然而Nanoprobe 只能做到 $10^{-12}$。
 4. DRAM 放大器要求必须高度统一。（BL 版图很多 Dummy）  
-5. BL Noise: ① CHANNEL 不能漏电。② GIDL 也不能漏电。C 是否体，不怕 GIDL 怕 CHANNEL LEAKAGE，Bulk 可以灌电压。无非是反过来，都是怕 GIDL。X 使用了 Dual Gate（一个 Gate 拆成 Poly 和 W），功函数不一样，结变缓，隧穿降低。  
+5. BL Noise: ① CHANNEL 不能漏电。② GIDL 也不能漏电。C 是浮体（Floating），不怕 GIDL 怕 CHANNEL LEAKAGE，Bulk 可以灌电压。无非是反过来，都是怕 GIDL。X 使用了 Dual Gate（一个 Gate 拆成 Poly 和 W），功函数不一样，结变缓，隧穿降低。  
 6. 写 “1” 比写 “0” 难，前者是 $V_g-V_S-V_t$，后者是 $V_g-V_t$，因此前者相比后者电流小。  
    
 
