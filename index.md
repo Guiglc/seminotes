@@ -6,7 +6,7 @@ hero:
   name: 'HUMMER INDUSTRIES'
   # tagline: Lecture notes
   actions:
-    - theme: brand
+    - theme: alt
       text: Markdown Examples
       link: /markdown-examples
     # - theme: alt
@@ -16,7 +16,10 @@ hero:
       text: Ⅰ Seminotes
       link: content/seminotes.md
     - theme: brand
-      text: Ⅱ Statistics
+      text: Ⅱ Memory
+      link: content/memory.md
+    - theme: brand
+      text: Ⅲ Statistics
       link: content/statistics.md
 
 # features:
