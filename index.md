@@ -21,6 +21,9 @@ hero:
     - theme: brand
       text: Ⅲ Statistics
       link: content/statistics.md
+    - theme: brand
+      text: Ⅳ Razavi Notes
+      link: content/Razavi note.md
 
 # features:
 #   - title: Feature A

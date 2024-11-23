@@ -23,7 +23,8 @@ export default defineConfig({
           // { text: 'Runtime API Examples', link: '/api-examples' }
           { text: 'Seminotes', link: 'content/seminotes.md' },
           { text: 'Memory', link: 'content/memory.md' },
-          { text: 'Statistics', link: 'content/statistics.md' }
+          { text: 'Statistics', link: 'content/statistics.md' },
+          { text: 'Razavi Notes', link: 'content/Razavi note.md' }
         ]
       }
     ],

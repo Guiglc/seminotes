@@ -3,14 +3,14 @@
 ## 0. 推荐书目
 1.《半导体物理与器件》--- 施敏  
 2.《固体物理》 --- 黄昆  
-3.《CMOS模拟电路设计》--- 拉扎维 和 Abidi 发表的论文  
+3.《CMOS模拟电路设计》--- 拉扎维  
 4. RF 射频电路设计  
 5. logic 电路设计 --- 有 SRAM 即可  
 6. 《Inside NAND Flash Memory》  
 7. 信息论  
 8. 自动控制原理 --- 会一种  
 9. 半导体可靠性评估  
-10. Fundamental Digital Test  
+10.  Fundamental Digital Test  
 
 * Asad Abidi 发表的论文
 
@@ -22,20 +22,51 @@
 
 ### 1.2 MOSFET
 MOSFET 可以看作是一个漏电的可变电容，时间短为可变电容，时间长则漏电。  
+
+<div align = center><img src = ../img/2024-11-20-22-44-46.png width = 500/></div>
+
 MOSFET 是一个电压控制性电流源，电压激发的器件其电流为指数型曲线。  
-（需理解）对长沟道NMOS而言，Bulk 加负压或者 Source 加正压，Vt 升高。  
 （需公式理解）N管不传高压，有Vt损失，P管可传高压，没有Vt损失。  
 （B比较小，容易扩散，传高压发热使结变大，有 Rel Concern）。  
 
-**非饱和区电流公式：**
-$$ I_D=\frac{W \mu_n C_{\mathrm{ox}}}{2L}\left[2\left(V_{G S}-V_T\right) V_{DS}-V_{DS}^2\right]$$
+**Treshold Voltage:**  
+$$
+\begin{align*}
+V_{\mathrm{TH}}&=\Phi_{\mathrm{MS}}+2 \Phi_{\mathrm{F}}+\frac{Q_{\mathrm{dep}}}{C_{\mathrm{ox}}} \\
+其中，\Phi_F&=(k T / q) \ln \left(N_{s u b} / n_i\right) \\
+Q_{dep} &=\sqrt{4 q \varepsilon_{s i} \mid \Phi_F \mid N_{s u b}}
+\end{align*}
+$$
+
+$V_\mathrm{TH}$ 随衬底掺杂浓度升高而升高，温度 $T$ 会影响 $\Phi_{\mathrm{F}}$ 而且影响 $n_i$，通常随温度升高而降低。  
+
+**非饱和区电流公式：** （三极管区，线性区）
+$$ I_D=\frac{1}{2}\mu_n C_{\mathrm{ox}} \frac{W}{L}\left[2\left(V_{G S}-V_T\right) V_{DS}-V_{DS}^2\right]$$
 
 $k_n^{\prime}=\mu_n C_{o x}$ 称为 n 沟道 MOSFET 的器件跨导参数, 单位为 $\mathrm{A} / \mathrm{V}^2$;  
 $K_n=\left(W \mu_n C_{\mathrm{ox}}\right) / 2 L=\left(k_n^{\prime} / 2\right) \cdot(W / L)$ 称为 n 沟道 MOSFET 的器件跨导系数, 单位也为 $\mathrm{A} / \mathrm{V}^2$。  
 
-**饱和区电流公式：**
-$$I_D=\frac{W \mu_n C_{\mathrm{ox}}}{2 L}\left(V_{G S}-V_T\right)^2$$
-Source 和 Drain 之间的饱和电压：$V_{D S}(\mathrm{sat})=V_{G S}-V_T$
+<div align = center><img src = ../img/2024-11-20-23-03-09.png width = 450/></div>
+
+当 $V_\mathrm{DS}$ 很小时，可以忽略不记，此时变为线性曲线。  
+
+<div align = center><img src = ../img/2024-11-20-23-18-05.png width = 400/></div>
+
+**饱和区电流公式：** 饱和 MOS 可视作电流源。
+$$I_D=\frac{1}{2} \mu_n C_{\mathrm{ox}} \frac{W}{L^{\prime}}\left(V_{G S}-V_T\right)^2$$
+
+式中的 $L^{\prime}$ 为考虑 pinch off 之后的沟道长度，即 $L^{\prime} < L$，但对于长沟道器件来说可以忽略不计。
+
+
+<div align = center><img src = ../img/2024-11-20-23-12-51.png width = 450/></div>
+
+MOS 的 Overdrive Voltage：  
+
+$$
+V_\mathrm{O D}=V_\mathrm{G S}-V_\mathrm{T H}=\sqrt{\frac{2 I_\mathrm D}{\mu_\mathrm n C_\mathrm{o x}(W / L)}}
+$$
+
+上述公式也被称为设计公式，即知道电流和管子的尺寸，就可以反推电压。
 
 ::: danger
 待修改公式为容易理解的形式。
@@ -72,8 +103,12 @@ REF: https://www.bilibili.com/video/BV18spre7E7u/
 :::
 
 ## 2 Analog Circuit
-### 2.1 ESD
-#### 2.1.1 Type I : Control and I/O Pin
+
+### 2.1 小信号模型
+
+
+### 2.2 ESD
+#### 2.2.1 Type I : Control and I/O Pin
 Openshort test，通电流，应看到 0.7V。
 所以 CE Pin 在图中位置，芯片大部分时间是不工作的，通高压让电路关闭。
 
@@ -84,7 +119,7 @@ Openshort test，通电流，应看到 0.7V。
 <div align = center><img src = ../img/image-3.png></div>
 :::
 
-#### 2.1.2 Type II: Power Pin
+#### 2.2.2 Type II: Power Pin
 
 &nbsp;
 
@@ -93,14 +128,14 @@ Openshort test，通电流，应看到 0.7V。
 当 VDD 有脉冲 15V 时，红圈处约 12V，对于下一个非门，效果就更好。在足够短的时间内将脉冲电压导走，也就是开启最后那个管子，三级保证了时间短。  
 Powershort 测试 force 电流测电压，看到 0.7V 压降。 SPEC：0.2V ~ 2V。Powershort 的电压可以很低，保证没有管子打开，避免 Floating （例如 VCC 处为 0.2V）带来的瞬态电流过大，而这并不是 short。  
 
-#### 2.1.3 Type III: HV Pin
+#### 2.2.3 Type III: HV Pin
 
 <div align = center><img src = ../img/image-6.png></div>
 
 ESD 电路需要抗各种频率，对于低频脉冲，当然希望降低 C，但是此情况下高频无法预防，所以 HV PIN 的 ESD 电路设计很难。
 
 
-### 2.2 工作点 - 反相器
+### 2.3 工作点 - 反相器
 
 <div align = center><img src = ../img/2024-10-01-00-05-44.png></div>  
 
@@ -133,9 +168,9 @@ $$
 2. 非振荡电路发生震荡
 3. 振荡电路不震荡
 
-### 2.3 Amplifier
+### 2.4 Amplifier
 
-#### 2.3.1 两种放大器
+#### 2.4.1 两种放大器
 
 
 <div align = center><img src = ../img/2024-10-07-13-35-03.png width = 700/></div>
@@ -143,7 +178,7 @@ $$
 实际中很难应用差分放大器，因为取反信号很难得到。  
 差分放大器干掉同向毛刺，滤波器干掉最原始的的单信号的毛刺。  
 
-#### 2.3.2 运算放大器
+#### 2.4.2 运算放大器
 
 <div align = center><img src = ../img/2024-10-06-11-49-41.png /></div>
 
@@ -160,7 +195,7 @@ $$
 虚短：$V_{IN}^+ \approx V_{IN}^-, \space \Delta V \approx 0$  
 虚断：$I_{IN}^+ \approx I_{IN}^- \approx 0, \space A \space 无穷大(>100)$  
 
-#### 2.3.3 LDO
+#### 2.4.3 LDO
 
 **不带负载：**
 <div align = center><img src = ../img/2024-10-06-12-30-20.png /></div>
@@ -196,8 +231,8 @@ DCDC 不耗能，只有电感电容。（新能源汽车动能回收？）
 2. 运算放大器正负符号确定
 :::
 
-### 2.4 Voltage Reference
-#### 2.4.1 Current Mirror
+### 2.5 Voltage Reference
+#### 2.5.1 Current Mirror
 
 电源很难做到和 V，T 完全无关，那么：  
 1. 威尔逊电流源 → 与 V 无关  
@@ -205,7 +240,7 @@ DCDC 不耗能，只有电感电容。（新能源汽车动能回收？）
    
 <div align = center><img src = ../img/2024-10-06-22-22-11.png /></div>
 
-#### 2.4.2 Wilson Current Mirror
+#### 2.5.2 Wilson Current Mirror
 
 <div align = center><img src = ../img/2024-10-06-20-47-16.png /></div>
 
@@ -245,7 +280,7 @@ $$
 \end{align*}
 $$
 
-#### 2.4.3 Bandgap
+#### 2.5.3 Bandgap
 <div align = center><img src = ../img/2024-10-06-22-04-57.png /></div>
 
 对于上图电路：
@@ -275,7 +310,7 @@ $$
 补充 $I_{BE}$ 和 $I_{PTAT}$ 的内容。
 :::
 
-### 2.5 Clock
+### 2.6 Clock
 
 ::: danger
 开始介绍了环形振荡器。（待补充）  
@@ -287,7 +322,7 @@ $$
 
 总体的效果是，芯片内部的 Clock 一直在追赶晶振 Clock。
 
-### 2.6 Charge Pump
+### 2.7 Charge Pump
 <div align = center><img src = ../img/2024-10-07-13-06-30.png /></div>
 
 电容充电抬高电势，然后断开前面的开关，闭合后面的开关，将电压传过去，此时后面电容对应的节点是低电平。  
