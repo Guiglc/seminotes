@@ -1,12 +1,15 @@
 # Ch2. 基本概念
 
-关于 MOSFET 基本概念和 I-V Curve 放在 Seminotes 中，不在此处重复。
+关于 MOSFET 基本概念和 I-V Curve 放在 Seminotes 中，不在此处重复。  
+
+Analog 的主要研究对象：  
+<div align = center><img src = ../img/2024-11-24-22-22-53.png width = 500/></div>
 
 ## 1 信号种类
 
 偏置量（直流量），小信号，瞬时量。  
 
-<div align = center><img src = ../img/2024-11-21-21-55-24.png width = 500/></div>
+<div align = center><img src = ../img/2024-11-21-21-55-24.png width = 300/></div>
 
 ::: tip
 不理解为什么必须要用电容和电阻。  
@@ -128,3 +131,45 @@ $C_{GS}$ 是一个非线性压控电容，积累效应带来的积累电容很�
 但是 FinFET 的 W 是固定的，不能轻易改变，所以想要做出不同 W 的管子，只能通过并联的方式来实现。  
 
 <div align = center><img src = ../img/2024-11-23-22-24-42.png width = 500/></div>
+
+## 6 单极放大器（Single-Stage Amplifier）
+
+一个理想的放大器应该是线性的，对一个信号的泰勒展开式，常数为直流项，一次项为线性项，我们希望更高次项的系数为 0，虽然这很难做到。  
+第三章讲的放大器都是非线性的，只是程度有所不同。  
+由于电路中电容的存在，所以频率不可能无限大。  
+
+
+::: tip
+模拟电路一头是噪声，一头是线性。
+:::
+
+$V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V_{in} = V_S$，无损传递。  
+同理，希望输出电阻无限小。  
+
+::: tip
+对电压型放大器是这样，如果前端是电流型或功率型的输入，那就不能要无穷大的输入电阻了，如电流型输入，输入电阻要越低越好否则输入电压就很高，而输出电阻则希望越高越好。  
+本章讲的放大器，**输入往往是电压型，而输出是电流**。  
+:::
+
+<div align = center><img src = ../img/2024-11-24-22-49-01.png width = 500/></div>
+::: danger
+下面这个图重新画一下
+<div align = center><img src = ../img/2024-11-24-22-50-20.png width = 500/></div>
+:::
+
+<div align = center><img src = ../img/2024-11-24-23-01-02.png width = 500/></div>
+
+输入输出电阻有的叫阻抗，阻抗是包括电容电感等在内的复电阻的。  
+
+<div align = center><img src = ../img/2024-11-24-23-09-10.png width = 500/></div>
+
+### 6.1 共源放大器 Common-Source Stage
+
+**当前章节主要关心**：  
+1. DC Swing  
+2. Small-Signal Gain  
+3. Input/Output Resistance  
+
+可以放电阻，不能放电容，能放电感但是就 keep $V_{DD}$ 了。  
+
+<div align = center><img src = ../img/2024-11-24-23-22-28.png width = 500/></div>
