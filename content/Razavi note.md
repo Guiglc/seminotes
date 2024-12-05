@@ -140,7 +140,7 @@ $C_{GS}$ 是一个非线性压控电容，积累效应带来的积累电容很�
 
 
 ::: tip
-模拟电路一头是噪声，一头是线性。
+模拟电路一头是噪声，一头是线性（因为放大能力和 $V_\textrm{in}$ 有关）。  
 :::
 
 $V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V_{in} = V_S$，无损传递。  
@@ -152,9 +152,11 @@ $V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V
 :::
 
 <div align = center><img src = ../img/2024-11-24-22-49-01.png width = 500/></div>
-::: danger
+::: danger  
+
 下面这个图重新画一下
 <div align = center><img src = ../img/2024-11-24-22-50-20.png width = 500/></div>
+
 :::
 
 <div align = center><img src = ../img/2024-11-24-23-01-02.png width = 500/></div>
@@ -165,11 +167,54 @@ $V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V
 
 ### 6.1 共源放大器 Common-Source Stage
 
+单晶体管放大器，其 Source 连接到 AC ground 即为共源放大器。  
+
 **当前章节主要关心**：  
 1. DC Swing  
 2. Small-Signal Gain  
 3. Input/Output Resistance  
 
-可以放电阻，不能放电容，能放电感但是就 keep $V_{DD}$ 了。  
+Load 可以放电阻，不能放电容，能放电感但是就 keep $V_\textrm{DD}$ 了。  
 
 <div align = center><img src = ../img/2024-11-24-23-22-28.png width = 500/></div>
+
+### 6.1.1 大信号分析 
+Cut off 区和 triode 区放大能力都不好，最好是饱和区。  
+
+<div align = center><img src = ../img/2024-12-05-22-50-27.png width = 500/></div>
+
+输入范围：$(V_\textrm{TH}, V_{in1})$，输出范围：$(V_\textrm{DS} = V_\textrm{GS} - V_\textrm{TH}, V_\textrm{DD})$
+
+<div align = center><img src = ../img/2024-12-05-22-57-40.png width = 500/></div>
+
+### 6.1.2 小信号增益
+
+这里说的 $V_{in}$ 对 $A_v$ 的影响，其实更多考虑的是 $V_\textrm{B}$ 的部分，因为小信号很小。
+<div align = center><img src = ../img/2024-12-05-23-05-20.png width = 500/></div>
+
+用小信号模型分析小信号就很容易。  
+如果晶体管多了就难了，但是如果电路是线性的，用小信号模型进行计算机计算就很容易。  
+<div align = center><img src = ../img/2024-12-05-23-14-31.png width = 500/></div>
+
+由于 $R_{D}$ 在几百 $\Omega$ 到几千 $\Omega$ 之间，而 $r_{o}$ 在几十 $k\Omega$ 到几百 $k\Omega$ 之间，所以 $R_{D} \| r_{o}$ 可以取为 $R_{D}$。  
+晶体管是朝着作为电流源去的，所以输出电阻要无穷大。  
+
+::: danger
+这跟前面讲的不一样啊，电压输出电流输出型的应该输出电阻无穷大，输出电阻要无穷小啊？
+根据后面的讲解，这里的 $r_o$ 不是真正意义上的输出电阻。
+:::
+
+<div align = center><img src = ../img/2024-12-05-23-22-27.png width = 500/></div>
+
+本征增益用电阻负载是不可能实现无穷大的，因为 $V_\textrm{out} = V_\textrm{DD} - i_d\cdot R_D$，所以若 $R_D$ 无穷大，则 $V_\textrm{out} = 0$。 
+<div align = center><img src = ../img/2024-12-05-23-40-38.png width = 500/></div>
+
+跨导在线性区时，随着 $V_{in}$ 的增加，$V_\textrm{DS}$ 会越来越小。也就是说在线性区，晶体管对电流的控制能力下降。
+
+<div align = center><img src = ../img/2024-12-05-23-45-54.png width = 500/></div>
+
+有趣的例题。  
+<div align = center><img src = ../img/2024-12-05-23-52-39.png width = 500/></div>
+
+### 6.1.3 输入输出电阻
+<div align = center><img src = ../img/2024-12-05-23-58-28.png width = 500/></div>
