@@ -23,7 +23,7 @@
 ### 1.2 MOSFET
 MOSFET 可以看作是一个漏电的可变电容，时间短为可变电容，时间长则漏电。  
 
-<div align = center><img src = ../img/2024-11-20-22-44-46.png width = 500/></div>
+<div align = center><img src = ../img/2024-11-20-22-44-46.png width = 300/></div>
 
 MOSFET 是一个电压控制性电流源，电压激发的器件其电流为指数型曲线。  
 （需公式理解）N管不传高压，有Vt损失，P管可传高压，没有Vt损失。  
