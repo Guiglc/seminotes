@@ -237,7 +237,7 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 摆幅小指的是由于 $V_{in1}$ 下降导致的 $V_{out}$ 整体的下降。  
 下图中 $R_2>R>R_1$。  
 
-<div align = center><img src = ../img/2024-12-07-19-36-32.png width = 500/></div>
+<div align = center><img src = ../img/2024-12-21-23-25-00.png width = 500/></div>
 
 ### 6.1.5 CS Stage with diode-connected load
 
