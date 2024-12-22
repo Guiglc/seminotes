@@ -472,15 +472,19 @@ JK 触发器解决了 R，S 不能都是 0 的问题。
 
 ::: tip  
 传输门能实现类似的功能，但是传输门能输出高阻态。  
+<div align = center><img src = ../img/2024-12-22-23-31-42.png width = 300/></div>
 :::  
 
 ::: tip  
 三态输出  
+<div align = center><img src = ../img/2024-12-22-23-36-11.png width = 300/></div>
 :::  
 
 ### 3.2 Setup time 和 Hold time
 
 整个电路运行所需的时间大致如图：  
+
+<div align = center><img src = ../img/2024-12-22-23-45-53.png width = 600/></div>
 
 对于两个 CLK:  
 
