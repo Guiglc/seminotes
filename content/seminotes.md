@@ -482,12 +482,14 @@ JK 触发器解决了 R，S 不能都是 0 的问题。
 
 ### 3.2 Setup time 和 Hold time
 
+<div align = center><img src = ../img/2024-12-23-23-14-02.png width = 400/></div>
+
 整个电路运行所需的时间大致如图：  
 
 <div align = center><img src = ../img/2024-12-22-23-45-53.png width = 600/></div>
 
 对于两个 CLK:  
-
+<div align = center><img src = ../img/2024-12-23-23-24-56.png width = 500/></div>
 
 $$
 \begin{align*}
@@ -502,6 +504,8 @@ $$
 因此 $t_\text{setup}$ 和 $t_\text{hold}$ 由频率掌控。  
 
 因为高频电路不好做，所以实际上都会想办法让 $t_\text{clk\_delay}$ 一样，由 H 型布线来实现（分形走线）。
+
+<div align = center><img src = ../img/2024-12-23-23-28-10.png width = 400/></div>
 
 **1. $t_\text{hold}$ 出问题：**  
 改不了 $t_\text{CLK}$ 和 $t_\text{DFF}$，只能改版。
@@ -551,11 +555,29 @@ DFT, 片选选择器，用于决定使用内部信号还是外部测试信号，
 
 ### 3.3 功耗
 
-功耗分为静态功耗和动态功耗。静态功耗与 Device Speed 正相关（每个节点都为定制，即由 $I_\text{Off}$决定），动态功耗理论上与 $I_\text{Off}$ 无关，但是实测却相关，这是因为热直激。  
+功耗分为静态功耗和动态功耗。**静态功耗与 Device Speed 正相关**（每个节点都为定制，即由 $I_\text{Off}$决定），动态功耗理论上与 $I_\text{Off}$ 无关，**正比于频率（CLK）**，但是实测却相关，这是因为热直激。  
 
-在 2T 周期内，由电荷 $Q = CV$ ，从$V_\text{dd}\ \rightarrow V_0$，做功 $W= VQ = C V^2$，功率为 $\dfrac{W}{2T}=\dfrac{C V^2}{2T}$，即 $P \propto \dfrac{CV^2}{T} = f CV^2$，所以动态功耗和器件速度无关，但动态功耗发热使静态功耗升高，测得的功耗为动态功耗 + 静态功耗。  
+#### 3.3.1 静态功耗计算
 
-所以 Sort 测不了动态功耗，因为测不了热直激。  
+[链接](https://www.researchgate.net/post/Why-the-power-consumption-is-strongly-affected-by-the-temperature-in-CMOS-design)
+
+由于温度对 $V_t$ 的影响，所以温度对静态功耗的影响是指数型曲线。
+
+
+#### 3.3.2 动态功耗计算
+
+<div align = center><img src = ../img/2024-12-23-23-33-21.png width = 500/></div>
+
+在 2T 周期内，由电荷 $Q = CV$ ，从$V_\text{dd}\ \rightarrow V_0$，做功 $W= VQ = C V^2$，功率为 $\dfrac{W}{2T}=\dfrac{C V^2}{2T}$，即 $P \propto \dfrac{CV^2}{T} = f CV^2$，所以动态功耗和器件速度无关。  
+
+但动态功耗发热使静态功耗升高，测得的功耗为动态功耗 + 静态功耗。Sort 测不了动态功耗，因为测不了热直激。    
+
+<div align = center><img src = ../img/2024-12-23-23-38-26.png width = 500/></div>
+
+对功耗和散热的分析：
+
+<div align = center><img src = ../img/2024-12-24-00-15-53.png width = 600/></div>
+
 
 为了有交点：  
 1. 降低动态功耗  
