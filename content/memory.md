@@ -107,8 +107,15 @@ Butterfly Curve 可以缩放，即减小电压，此时 SNM 变小，也就是�
 什么是验 Scramble？
 :::
 
+<div align = center><img src = ../img/2024-12-25-00-15-29.png width = 400/></div>
+
 DRAM RD 时 BL 电压: 0V (看升不升)，$V_\text{DD}$(看放不放电)，$\dfrac{1}{2}V_\text{DD}$（看往哪边拉）
 电容的另一端接 0V，$V_\text{DD}$，$\dfrac{1}{2}V_\text{DD}$ 都可以，一般选择 0V 或者 $\dfrac{1}{2}V_\text{DD}$。
+
+::: tip
+DRAM 的放大器：虽然结构很像 SRAM 但不是，注意 N : P = 1 : 1。  
+<div align = center><img src = ../img/2024-12-25-00-19-46.png width = 400/></div>
+:::
 
 **DRAM 的几个难点：**
 1. C 使用 $\dfrac{1}{2}V_\text{DD}$， $C=\dfrac{\epsilon S}{4\pi kd}, 而 Q=CV$，介电层要越做越薄（只能改变 d），然后用 $\dfrac{1}{2}V_\text{DD}$ 来降低隧穿。
@@ -124,6 +131,14 @@ $$
 3. 有 MOS 管的情况下，就会有 $I_\text{Off}$，电容就漏电，因此要求 $I_\text{Off}$ 做到 $10^{-14}$ 量级，然而Nanoprobe 只能做到 $10^{-12}$。
 4. DRAM 放大器要求必须高度统一。（BL 版图很多 Dummy）  
 5. BL Noise: ① CHANNEL 不能漏电。② GIDL 也不能漏电。C 是浮体（Floating），不怕 GIDL 怕 CHANNEL LEAKAGE，Bulk 可以灌电压。无非是反过来，都是怕 GIDL。X 使用了 Dual Gate（一个 Gate 拆成 Poly 和 W），功函数不一样，结变缓，隧穿降低。  
+<div align = center><img src = ../img/2024-12-25-00-29-05.png width = 400/></div>
+
+::: tip
+X 是平面结构，存 “0” 好但是存 “1” 差。  
+
+<div align = center><img src = ../img/2024-12-25-00-31-36.png width = 400/></div>
+:::
+
 6. 写 “1” 比写 “0” 难，前者是 $V_g-V_S-V_t$，后者是 $V_g-V_t$，因此前者相比后者电流小。  
    
 

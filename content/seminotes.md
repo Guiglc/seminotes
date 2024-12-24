@@ -578,20 +578,22 @@ DFT, 片选选择器，用于决定使用内部信号还是外部测试信号，
 
 <div align = center><img src = ../img/2024-12-24-00-15-53.png width = 600/></div>
 
-
 为了有交点：  
 1. 降低动态功耗  
 2. 降 $I_\text{Off}$  
 3. 换散热板  
 
-
-
-**1. Voltage Binning**
+**1. Voltage Binning**  
 但是有的芯片没法降频（没有市场），只能降电压，也就是 Voltage Binning。Qualcom 和联发科采用这种方法，市场不接受所谓低频版，所以全部调电压，营销上先卖低频版，再卖高频版。  
 
 另外 Qualcom 的芯片主要用于手机，不能太高温，产品可靠性要求也不高，所以也有需要降频降压机制来控制温度。  
 
-**2. Frequency Binning**
+**2. Frequency Binning**  
 英特尔的 i3, i5, i7 即是采用 Frequency Bining，解决了良率问题，可以任意屏蔽核心，节省了研发和测试成本。  
 
 另外不做 Voltage Bining 也和升压带来的可靠性问题有关，SS corner 寿命差。  
+
+## 4 Reliability
+### 4.1.1 Sample Size Calculation
+
+### 4.1.2 Qual

@@ -5,7 +5,7 @@
 Analog 的主要研究对象：  
 <div align = center><img src = ../img/2024-11-24-22-22-53.png width = 500/></div>
 
-## 1 信号种类
+## 2.1 信号种类
 
 偏置量（直流量），小信号，瞬时量。  
 
@@ -15,7 +15,7 @@ Analog 的主要研究对象：
 不理解为什么必须要用电容和电阻。  
 :::
 
-## 2 到底什么是放大器的增益
+## 2.2 到底什么是放大器的增益
 不能用直流量量的输入输出来衡量放大器的增益，因为当 $V_B$ 为 0 时，$V_{out} = V_{DD}$，当 $V_B$ 很大时，$V_{out}$ 又很小（$I_D$ 很大）。  
 
 <div align = center><img src = ../img/2024-11-21-21-59-03.png width = 500/></div>
@@ -35,7 +35,7 @@ Analog 的主要研究对象：
 <div align = center><img src = ../img/2024-11-21-22-15-43.png width = 500/></div>
 :::
 
-## 3 跨导
+## 2.3 跨导
 
 <div align = center><img src = ../img/2024-11-21-22-24-22.png width = 500/></div>
 
@@ -43,9 +43,9 @@ Analog 的主要研究对象：
 
 <div align = center><img src = ../img/2024-11-21-22-25-28.png width = 500/></div>
 
-## 4 二阶效应
+## 2.4 二阶效应
 
-### 4.1 体效应
+### 2.4.1 体效应
 
 体效应（背栅效应）：对 **长沟道** NMOS 而言，Bulk 加负压或者 Source 加正压，Vt 升高。  
 
@@ -66,7 +66,7 @@ NMOS $\gamma$ 为正值，PMOS 为负值。
 
 <div align = center><img src = ../img/2024-11-21-22-58-13.png width = 500/></div>
 
-### 4.2 沟道长度调制效应
+### 2.4.2 沟道长度调制效应
 
 $\dfrac{1}{L}\dfrac{1}{(1-\Delta L/L)} \approx \dfrac{1}{L}\left(1+\dfrac{\Delta L}{L}\right)$ 使用了无穷小代换。  
 
@@ -83,7 +83,7 @@ $V_A$ 即为厄雷电压，想降低 $\lambda$ 即可以通过增大 L 来实现
 最终得到的模型，受到 $V_{GS}$，$V_{BS}$，$V_{DS}$ 影响。  
 <div align = center><img src = ../img/2024-11-23-21-50-36.png width = 500/></div>
 
-### 4.3 亚阈值导电性
+### 2.4.3 亚阈值导电性
 
 ::: danger
 式中 $V_T$ 不是阈值电压，$V_T= kT/Q$，在室温下约等于 26mV。也就是 $V_{DS} > 100mV$。  
@@ -96,7 +96,7 @@ $V_A$ 即为厄雷电压，想降低 $\lambda$ 即可以通过增大 L 来实现
 
 <div align = center><img src = ../img/2024-11-23-22-01-27.png width = 500/></div>
 
-## 5 寄生电容
+## 2.5 寄生电容
 
 两类寄生电容：
 1. **介质电容**质量比较好，因为二氧化硅做好了，特性也就确定了。  
@@ -122,7 +122,7 @@ $C_{GS}$ 是一个非线性压控电容，积累效应带来的积累电容很�
 
 因为下面三个很小，所以一般不考虑，这些电容最终影响的是频率响应。（第六章）  
 
-## 6 Further Scaling and I-V Curve
+## 2.6 Further Scaling and I-V Curve
 
 当器件尺寸进入到纳米级时，平面晶体管的 I-V Curve 的平方律特性就减弱很多。有了新的设计方法 $G_m/I_D$。
 <div align = center><img src = ../img/2024-11-23-22-21-42.png width = 500/></div>
@@ -165,7 +165,7 @@ $V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V
 
 <div align = center><img src = ../img/2024-11-24-23-09-10.png width = 500/></div>
 
-## 6.1 共源放大器 Common-Source Stage
+## 3.1 共源放大器 Common-Source Stage
 
 单晶体管放大器，其 Source 连接到 AC ground 即为共源放大器。  
 
@@ -178,7 +178,7 @@ Load 可以放电阻，不能放电容，能放电感但是就 keep $V_\textrm{D
 
 <div align = center><img src = ../img/2024-11-24-23-22-28.png width = 500/></div>
 
-### 6.1.1 大信号分析 
+### 3.1.1 大信号分析 
 Cut off 区和 triode 区放大能力都不好，最好是饱和区。  
 
 <div align = center><img src = ../img/2024-12-05-22-50-27.png width = 500/></div>
@@ -187,7 +187,7 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 
 <div align = center><img src = ../img/2024-12-05-22-57-40.png width = 500/></div>
 
-### 6.1.2 小信号增益
+### 3.1.2 小信号增益
 
 这里说的 $V_{in}$ 对 $A_v$ 的影响，其实更多考虑的是 $V_\textrm{B}$ 的部分，因为小信号很小。
 <div align = center><img src = ../img/2024-12-05-23-05-20.png width = 500/></div>
@@ -216,18 +216,18 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 有趣的例题。  
 <div align = center><img src = ../img/2024-12-05-23-52-39.png width = 500/></div>
 
-### 6.1.3 输入输出电阻
+### 3.1.3 输入输出电阻
 测试的时候，就是给电压源，测电流。  
 测输入的时候不用短路输出，但是测输出的时候要短路输入（如何短路输入？）。  
 <div align = center><img src = ../img/2024-12-05-23-58-28.png width = 500/></div>
 
 
-### 6.1.4 Triode Range
+### 3.1.4 Triode Range
 
 在 Triode Range 就变成了压控电阻。  
 <div align = center><img src = ../img/2024-12-06-00-01-02.png width = 500/></div>
 
-### 6.1.5 如何计算 $V_{in1}$ 
+### 3.1.5 如何计算 $V_{in1}$ 
 
 所以 $V_{in1}$ 并非一个绝对的点，是相对 $R_{D}$ 变化的。  
 
@@ -239,7 +239,7 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 
 <div align = center><img src = ../img/2024-12-21-23-25-00.png width = 500/></div>
 
-### 6.1.5 CS Stage with diode-connected load
+### 3.1.6 CS Stage with diode-connected load
 
 把 GS 端接在一起，MOS 就变成了一个二极管。  
 <div align = center><img src = ../img/2024-12-07-23-08-02.png width = 500/></div>
