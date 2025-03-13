@@ -16,7 +16,7 @@ Analog 的主要研究对象：
 :::
 
 ## 2.2 到底什么是放大器的增益
-不能用直流量量的输入输出来衡量放大器的增益，因为当 $V_B$ 为 0 时，$V_{out} = V_{DD}$，当 $V_B$ 很大时，$V_{out}$ 又很小（$I_D$ 很大）。  
+不能用直流量的输入输出来衡量放大器的增益，因为当 $V_B$ 为 0 时，$V_{out} = V_{DD}$，当 $V_B$ 很大时，$V_{out}$ 又很小（$I_D$ 很大）。  
 
 <div align = center><img src = ../img/2024-11-21-21-59-03.png width = 500/></div>
 
@@ -152,11 +152,10 @@ $V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V
 :::
 
 <div align = center><img src = ../img/2024-11-24-22-49-01.png width = 500/></div>
-::: danger  
 
+::: danger  
 下面这个图重新画一下
 <div align = center><img src = ../img/2024-11-24-22-50-20.png width = 500/></div>
-
 :::
 
 <div align = center><img src = ../img/2024-11-24-23-01-02.png width = 500/></div>
@@ -170,7 +169,7 @@ $V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V
 单晶体管放大器，其 Source 连接到 AC ground 即为共源放大器。  
 
 **当前章节主要关心**：  
-1. DC Swing  
+1. DC Swing（直流电压工作点）  
 2. Small-Signal Gain  
 3. Input/Output Resistance  
 
