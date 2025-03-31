@@ -390,7 +390,7 @@ $$
 
 即 $C = \overline B = \overline{\text{CLK}}$，负载多了就打开 Clock，负载少了就关掉。
 
-<div align = center><img src = ../img/2024-10-07-14-35-35.png width = 500/></div>
+<div align = center><img src = ../img/2025-04-01-00-06-15.png width = 500/></div>
 
 管子的最高工作电压 ~30V，实际只能传 25.5V，这决定了 NAND Program 电压的极限。
 
