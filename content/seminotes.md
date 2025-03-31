@@ -315,11 +315,7 @@ $$
 
 常见晶振频率：26MHz, 32MHz。
 
-::: danger
-下图需要补充完整版。  
-:::
-
-<div align = center><img src = ../img/2024-10-06-23-08-05.png /></div>
+<div align = center><img src = ../img/2025-03-31-21-57-26.png width = 700/></div>
 
 总体的效果是，芯片内部的 Clock 一直在追赶晶振 Clock。
 
