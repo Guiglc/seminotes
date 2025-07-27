@@ -17,18 +17,37 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
     ],
-    sidebar: [
-      {
-        text: 'Docs Overview',
-        items: [
-          // { text: 'Markdown Examples', link: '/markdown-examples' },
-          // { text: 'Runtime API Examples', link: '/api-examples' }
-          { text: 'Seminotes', link: 'content/seminotes.md' },
-          { text: 'Memory', link: 'content/memory.md' },
-          { text: 'Statistics', link: 'content/statistics.md' },
-        ]
-      }
-    ],
+    sidebar: {
+      '/content/': [
+        {
+          text: 'Docs Overview',
+          items: [
+            // { text: 'Markdown Examples', link: '/markdown-examples' },
+            // { text: 'Runtime API Examples', link: '/api-examples' }
+            { text: 'Seminotes', link: 'content/seminotes.md' },
+            { text: 'Memory', link: 'content/memory.md' },
+            { text: 'Statistics', link: 'content/statistics.md' }
+          ]
+        }
+      ],
+
+      '/Razavi/': [
+        {
+          text: 'Docs Overview',
+          items: [
+            // { text: 'Markdown Examples', link: '/markdown-examples' },
+            // { text: 'Runtime API Examples', link: '/api-examples' }
+            { text: 'Ch2. Basic Concept', link: 'Razavi/ch2.md' },
+            { text: 'Ch3. Amplifier', link: 'Razavi/ch3.md' },
+            { text: 'Ch4. ', link: 'Razavi/Ch4.md' },
+            { text: 'Ch5. ', link: 'Razavi/Ch5.md' },
+            { text: 'Ch6. ', link: 'Razavi/Ch6.md' },
+            { text: 'Ch7. ', link: 'Razavi/Ch7.md' },
+            { text: 'Ch8. ', link: 'Razavi/Ch8.md' },
+          ]
+        }
+      ],
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Guiglc' }
