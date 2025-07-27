@@ -36,12 +36,12 @@ hero:
 ---
 
 
-<h2 class="section-title">备用</h2>
+<!-- <h2 class="section-title">备用</h2>
 <div class="custom-hero-actions">
   <a href="/seminotes/markdown-examples" class="white-btn">Markdown Examples</a>
-</div>
+</div> -->
 
-<h2 class="section-title">主题笔记</h2>
+<h2 class="section-title">Notes</h2>
 <div class="custom-hero-actions">
   <a href="/seminotes/content/seminotes">Ⅰ Seminotes</a>
   <a href="/seminotes/content/memory">Ⅱ Memory</a>
