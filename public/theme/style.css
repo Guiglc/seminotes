@@ -1,0 +1,69 @@
+/* 容器样式：每行4个按钮 */
+.custom-hero-actions {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0;
+    justify-content: start;
+}
+
+/* 按钮通用样式 */
+.custom-hero-actions a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* 填满 grid 宽度 */
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: var(--vp-button-brand-bg);
+    color: white;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 悬停时效果 */
+.custom-hero-actions a:hover {
+    background-color: var(--vp-button-brand-hover-bg);
+    color: white;
+}
+
+
+/* 白色底按钮 */
+.custom-hero-actions a.white-btn {
+    background-color: rgb(235, 235, 235);
+    color: rgb(18, 18, 18);
+    /* 文字变成主题色 */
+    box-shadow: 0 0 0 rgb(0 0 0 / 0.1);
+}
+
+.custom-hero-actions a.white-btn:hover {
+    background-color: rgb(200, 200, 200);
+    color: rgb(18, 18, 18);
+}
+
+
+.section-title {
+    font-size: 1.25rem;
+    /* 稍微比正文大一点 */
+    color: var(--vp-button-brand-bg);
+    /* 蓝色，可根据主题调整 */
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+}
+
+.section-header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--vp-button-brand-bg);
+    /* 深一点的蓝色 */
+    margin: 5rem 0 1rem;
+    padding-left: 0;
+}

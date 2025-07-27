@@ -2,6 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  head: [
+    ['link', { rel: 'stylesheet', href: '/seminotes/theme/style.css' }]
+  ],
   markdown: {
     math: true
   },
@@ -14,7 +17,6 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
     ],
-
     sidebar: [
       {
         text: 'Docs Overview',
@@ -24,7 +26,7 @@ export default defineConfig({
           { text: 'Seminotes', link: 'content/seminotes.md' },
           { text: 'Memory', link: 'content/memory.md' },
           { text: 'Statistics', link: 'content/statistics.md' },
-          { text: 'Razavi Notes', link: 'content/Razavi note.md' }
+          { text: 'Razavi Notes', link: 'content/Razavi/Razavi note.md' }
         ]
       }
     ],
@@ -55,3 +57,4 @@ export default defineConfig({
     },
   }
 })
+
