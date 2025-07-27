@@ -594,7 +594,7 @@ DFT, 片选选择器，用于决定使用内部信号还是外部测试信号，
 ## 4 Reliability
 ### 4.1.1 Sample Size Calculation
 
-$(99\%)^n < 1 - \text{CL} $
+$(99\%)^n < 1 - \text{CL}$  
 
 ### 4.1.2 Qual
 
@@ -615,7 +615,7 @@ $$
 \end{cases}\\
 &\text{Product Qual}
 \begin{cases}
-\text{Logic: HTOL, 1000h, 120\degree C (SRAM, DRAM)} \\
+\text{Logic: HTOL, 1000h, 120} \degree \text{C SRAM, DRAM} \\
 \text{Memory}
 \begin{cases}
 \text{Cycling} \\
@@ -626,7 +626,7 @@ $$
 \begin{cases}
 \text{TCT(TMCL): 1000次，偶尔} \\
 \text{HAST: 192h, 很容易挂} \\
-\text{HST: 1000h, 150\degree C, 很难挂}
+\text{HST: 1000h, 150} \degree \text{C, 很难挂}
 \end{cases}\\
 \end{align*}
 $$
