@@ -589,9 +589,44 @@ DFT, 片选选择器，用于决定使用内部信号还是外部测试信号，
 
 另外不做 Voltage Bining 也和升压带来的可靠性问题有关，SS corner 寿命差。  
 
+用户很难接受所谓的低频版，所以全部调电压，策略上先卖低频再卖高频.  
+
 ## 4 Reliability
 ### 4.1.1 Sample Size Calculation
 
+$(99\%)^n < 1 - \text{CL} $
+
 ### 4.1.2 Qual
 
-test
+$$
+\begin{align*}
+&\text{Process Qual}
+\begin{cases}
+\text{Device} \begin{cases}
+\fbox{HCI} \rightarrow 方框 \text{ item } 均以 \text{ shift 10\% }  记为 \text{ fail } \\
+\text{TDDB} \\
+\fbox{NBTI}
+\end{cases}\\
+\text{Metal}
+\begin{cases}
+\fbox{SM} \\
+\fbox{EM} 
+\end{cases}
+\end{cases}\\
+&\text{Product Qual}
+\begin{cases}
+\text{Logic: HTOL, 1000h, 120\degree C (SRAM, DRAM)} \\
+\text{Memory}
+\begin{cases}
+\text{Cycling} \\
+\text{Retention} 
+\end{cases}
+\end{cases}\\
+&\text{Package Qual}
+\begin{cases}
+\text{TCT(TMCL): 1000次，偶尔} \\
+\text{HAST: 192h, 很容易挂} \\
+\text{HST: 1000h, 150\degree C, 很难挂}
+\end{cases}\\
+\end{align*}
+$$
