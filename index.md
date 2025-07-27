@@ -6,7 +6,7 @@ hero:
   name: 'HUMMER INDUSTRIES'
   # tagline: Learning notes from Guiglc
   image:
-    src: public\theme\蜂鸟工业.png
+    src: public\theme\hummer.png
   # actions:
   #   - theme: alt
   #     text: Markdown Examples
