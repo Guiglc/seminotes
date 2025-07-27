@@ -6,7 +6,7 @@ hero:
   name: 'HUMMER INDUSTRIES'
   # tagline: Learning notes from Guiglc
   image:
-    src: /蜂鸟工业.png
+    src: public\theme\蜂鸟工业.png
   # actions:
   #   - theme: alt
   #     text: Markdown Examples
@@ -50,6 +50,14 @@ hero:
 
 <h2 class="section-title">Razavi</h2>
 <div class="custom-hero-actions">
-  <a href="/seminotes/content/Razavi/Razavi%20note">Razavi Notes</a>
+  <a href="/seminotes/content/Razavi/ch2">Ch2. Basic Concept</a>
+  <a href="/seminotes/content/Razavi/ch3">Ch3. Amplifier</a>
+  <a href="/seminotes/content/Razavi/ch4">Ch4.</a>
+  <a href="/seminotes/content/Razavi/ch5">Ch5.</a>
+  <a href="/seminotes/content/Razavi/ch6">Ch6.</a>
+  <a href="/seminotes/content/Razavi/ch7">Ch7.</a>
+  <a href="/seminotes/content/Razavi/ch8">Ch8.</a>
 </div>
+
+
 
