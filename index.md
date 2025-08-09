@@ -6,7 +6,7 @@ hero:
   name: 'HUMMER INDUSTRIES'
   # tagline: Learning notes from Guiglc
   image:
-    src: public\theme\hummer.png
+    src: /theme/hummer.png
   # actions:
   #   - theme: alt
   #     text: Markdown Examples
@@ -60,4 +60,7 @@ hero:
 </div>
 
 
-
+<h2 class="section-title">PDF</h2>
+<div class="custom-hero-actions">
+  <a href="/seminotes/pdf-viewer" class="button">查看 PDF 示例</a>
+</div>
