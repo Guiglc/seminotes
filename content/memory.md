@@ -33,7 +33,7 @@ Double Deck: 从下往上，因为 deck 接头处隔绝电流太强。
 
 $V_\text{PassR} = 6.5 \sim 7\text{V}，由于 \space  V_g - V_t \geq 1.5V，所以 \space Cell \space 的  \space V_t \space  最高只能 \space  5 \sim 5.5 \text{V}$。
 
-::: danger
+::: tip
 然后介绍了 Voltage Sensing 到 Current Sensing。
 :::
 
@@ -41,7 +41,7 @@ UVVt 是 UV 光照了之后的 Vt。
 
 ## 2. SRAM
 
-<div align = center><img src = ../img/2024-10-13-22-35-55.png width = 400/></div>
+<div align = center><img src = ../img/2025-08-24-21-01-58.png width = 500/></div>
 
 写：左 0，右 1。  
 读：左 $\dfrac{1}{2}V_{\text{DD}}$，右 $\dfrac{1}{2}V_{\text{DD}}$ 或者两边都 $V_{\text{DD}}$ 。
@@ -49,8 +49,8 @@ UVVt 是 UV 光照了之后的 Vt。
 为了保证 Read 的时候不发生翻转，需要保证 $V_{\text{Read}}<0.7\text{V}$，即小于右 N 管的 $V_t$。
 $$
 \begin{align*}
-I_\text{PD}(0.7\text V) &> I_\text{PD}(\text{Source} = 0.7\text V) \\
-\dfrac{1}{2}\mu C_{\text{ox}}\left(\dfrac{W}{L}\right)_\text{PD} \left(V_{G}-V_t+\frac{1}{2}V_{DD}\right)V_\text{DD} &> \dfrac{1}{2}\mu C_{\text{ox}}\left(\dfrac{W}{L}\right)_\text{PG} \left(V_{G}-0.7\text V - V_T \right)^2
+I_\text{PD}(0.7\text V) &> I_\text{PG}(\text{Source} = 0.7\text V) \\
+\dfrac{1}{2}\mu C_{\text{ox}}\left(\dfrac{W}{L}\right)_\text{PD} \left(V_{G}-V_t+\frac{1}{2}V_{DD}\right)V_\text{DD} &> \dfrac{1}{2}\mu C_{\text{ox}}\left(\dfrac{W}{L}\right)_\text{PG} \left(V_{G}-0.7\text V - V_t \right)^2
 \end{align*}
 $$ 
 
@@ -88,24 +88,21 @@ Butterfly Curve 可以缩放，即减小电压，此时 SNM 变小，也就是�
 }
 </style>
 
-<p align="center"><font face="黑体" size=2.>表2 不同 VCC 下 90% 良率对应阶段</font></p>
+<p align="center"><font face="黑体" size=2.>表2 不同 VDD 下 90% 良率对应阶段</font></p>
 
 <div class="center">
 
-| Yield | $V_\text{CC}$ Level | 对应阶段 |
+| Yield | $V_\text{DD}$ Level | 对应阶段 |
 | :---: | :-----------------: | :------: |
-|  90%  |    $V_\text{CC}$    |   研发   |
-|  90%  |  0.9$V_\text{CC}$   |  试量产  |
-|  90%  |  0.8$V_\text{CC}$   |   量产   |
-|  90%  |  0.7$V_\text{CC}$   |   TSMC   |
+|  90%  |    $V_\text{DD}$    |   研发   |
+|  90%  |  0.9$V_\text{DD}$   |  试量产  |
+|  90%  |  0.8$V_\text{DD}$   |   量产   |
+|  90%  |  0.7$V_\text{DD}$   |   TSMC   |
 
 </div>
 
 ## 3. DRAM
 
-::: danger
-什么是验 Scramble？
-:::
 
 <div align = center><img src = ../img/2024-12-25-00-15-29.png width = 400/></div>
 
@@ -128,9 +125,9 @@ V_x &= \dfrac{\dfrac{1}{2}V_\text{DD}C_\text{BL}+V_\text{DD}}{C_\text{BL} + C_\t
 V_x &= \dfrac{1}{2}V_\text{DD}\dfrac{C_\text{BL}}{C_\text{BL} + C_\text S}\\
 \end{align*}
 $$
-3. 有 MOS 管的情况下，就会有 $I_\text{Off}$，电容就漏电，因此要求 $I_\text{Off}$ 做到 $10^{-14}$ 量级，然而Nanoprobe 只能做到 $10^{-12}$。
-4. DRAM 放大器要求必须高度统一。（BL 版图很多 Dummy）  
-5. BL Noise: ① CHANNEL 不能漏电。② GIDL 也不能漏电。C 是浮体（Floating），不怕 GIDL 怕 CHANNEL LEAKAGE，Bulk 可以灌电压。无非是反过来，都是怕 GIDL。X 使用了 Dual Gate（一个 Gate 拆成 Poly 和 W），功函数不一样，结变缓，隧穿降低。  
+1. 有 MOS 管的情况下，就会有 $I_\text{Off}$，电容就漏电，因此要求 $I_\text{Off}$ 做到 $10^{-14}$ 量级，然而Nanoprobe 只能做到 $10^{-12}$。
+2. DRAM 放大器要求必须高度统一。（BL 版图很多 Dummy）  
+3. BL Noise: ① CHANNEL 不能漏电。② GIDL 也不能漏电。C 是浮体（Floating），不怕 GIDL 怕 CHANNEL LEAKAGE，Bulk 可以灌电压。无非是反过来，都是怕 GIDL。X 使用了 Dual Gate（一个 Gate 拆成 Poly 和 W），功函数不一样，结变缓，隧穿降低。  
 <div align = center><img src = ../img/2024-12-25-00-29-05.png width = 400/></div>
 
 ::: tip
