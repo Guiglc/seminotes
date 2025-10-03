@@ -473,7 +473,7 @@ JK 触发器解决了 R，S 不能都是 0 的问题。
 
 ::: tip  
 三态输出  
-<div align = center><img src = ../img/2024-12-22-23-36-11.png width = 300/></div>
+<div align = center><img src = ../img/2025-10-03-18-50-57.png width = 300/></div>
 :::  
 
 ### 3.2 Setup time 和 Hold time
