@@ -1,3 +1,35 @@
+# Ch3. 单级放大器（Single-Stage Amplifier）
+
+一个理想的放大器应该是线性的，对一个信号的泰勒展开式，常数为直流项，一次项为线性项，我们希望更高次项的系数为 0，虽然这很难做到。  
+第三章讲的放大器都是非线性的，只是程度有所不同。  
+由于电路中电容的存在，所以频率不可能无限大。  
+
+
+::: tip
+模拟电路一头是噪声，一头是线性（因为放大能力和 $V_\textrm{in}$ 有关）。  
+:::
+
+$V_{in} =  V_1\dfrac{R_{in}}{R_{S}+R_{in}}$，如果 $R_{in}$ 无穷大，则 $V_{in} = V_S$，无损传递。  
+同理，希望输出电阻无限小。  
+
+::: tip
+对电压型放大器是这样，如果前端是电流型或功率型的输入，那就不能要无穷大的输入电阻了，如电流型输入，输入电阻要越低越好否则输入电压就很高，而输出电阻则希望越高越好。  
+本章讲的放大器，**输入往往是电压型，而输出是电流**。  
+:::
+
+<div align = center><img src = ../img/2024-11-24-22-49-01.png width = 500/></div>
+
+::: danger  
+下面这个图重新画一下
+<div align = center><img src = ../img/2024-11-24-22-50-20.png width = 500/></div>
+:::
+
+<div align = center><img src = ../img/2024-11-24-23-01-02.png width = 500/></div>
+
+输入输出电阻有的叫阻抗，阻抗是包括电容电感等在内的复电阻的。  
+
+<div align = center><img src = ../img/2024-11-24-23-09-10.png width = 500/></div>
+
 ## 3.1 共源放大器 Common-Source Stage
 
 单晶体管放大器，其 Source 连接到 AC ground 即为共源放大器。  
@@ -11,18 +43,26 @@ Load 可以放电阻，不能放电容，能放电感但是就 keep $V_\textrm{D
 
 <div align = center><img src = ../img/2024-11-24-23-22-28.png width = 500/></div>
 
-### 3.1.1 大信号分析 
+### 3.1.1 Resistive Load
+
+#### 3.1.1.1 大信号分析 
 Cut off 区和 triode 区放大能力都不好，最好是饱和区。  
 
 <div align = center><img src = ../img/2024-12-05-22-50-27.png width = 500/></div>
+输入范围：$(V_\textrm{TH}, V_{in1})$，输出范围：$(V_\textrm{DS} = V_\textrm{GS} - V_\textrm{TH}, V_\textrm{DD}) 
+为了保证有足够的余量，偏置点放在整个摆幅的中间。
 
-输入范围：$(V_\textrm{TH}, V_{in1})$，输出范围：$(V_\textrm{DS} = V_\textrm{GS} - V_\textrm{TH}, V_\textrm{DD})$
+<div align = center><img src = ../img/2024-12-05-22-57-40.png width = 500/></div>   
 
-<div align = center><img src = ../img/2024-12-05-22-57-40.png width = 500/></div>
-
-### 3.1.2 小信号增益
+#### 3.1.1.2 小信号增益
 
 这里说的 $V_{in}$ 对 $A_v$ 的影响，其实更多考虑的是 $V_\textrm{B}$ 的部分，因为小信号很小。
+“大信号特性的斜率就是小信号放大的能力”。
+
+::: tip
+这里隐含的信息：$A_v$ 竟然不是定值而是受到 $V_{in}$ 的影响，所以实际使用的时候，DC 偏置都是固定的，小信号则足够小，对 $A_v$ 的影响可以忽略不记。
+:::
+
 <div align = center><img src = ../img/2024-12-05-23-05-20.png width = 500/></div>
 
 用小信号模型分析小信号就很容易。  
@@ -30,6 +70,7 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 <div align = center><img src = ../img/2024-12-05-23-14-31.png width = 500/></div>
 
 由于 $R_{D}$ 在几百 $\Omega$ 到几千 $\Omega$ 之间，而 $r_{o}$ 在几十 $k\Omega$ 到几百 $k\Omega$ 之间，所以 $R_{D} \| r_{o}$ 可以取为 $R_{D}$。  
+$$ \dfrac{R_D \cdot r_o}{R_D + r_o} \approx R_D$$
 晶体管是朝着作为电流源去的，所以输出电阻要无穷大。  
 
 ::: danger
@@ -42,27 +83,27 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 本征增益用电阻负载是不可能实现无穷大的，因为 $V_\textrm{out} = V_\textrm{DD} - i_d\cdot R_D$，所以若 $R_D$ 无穷大，则 $V_\textrm{out} = 0$。 
 <div align = center><img src = ../img/2024-12-05-23-40-38.png width = 500/></div>
 
-跨导在线性区时，随着 $V_{in}$ 的增加，$V_\textrm{DS}$ 会越来越小。也就是说在线性区，晶体管对电流的控制能力下降。
+跨导在饱和区时 $(V_{TH},V_{in1})$，随着 $V_{in}$ 增大而增大。跨导在线性区时（$>V_{in1}$），随着 $V_{in}$ 的增加，$V_\textrm{DS}$ 会越来越小。也就是说在线性区，晶体管对电流的控制能力下降。
 
 <div align = center><img src = ../img/2024-12-05-23-45-54.png width = 500/></div>
 
 有趣的例题。  
 <div align = center><img src = ../img/2024-12-05-23-52-39.png width = 500/></div>
 
-### 3.1.3 输入输出电阻
+#### 3.1.1.3 输入输出电阻
 测试的时候，就是给电压源，测电流。  
 测输入的时候不用短路输出，但是测输出的时候要短路输入（如何短路输入？）。  
 <div align = center><img src = ../img/2024-12-05-23-58-28.png width = 500/></div>
 
 
-### 3.1.4 Triode Range
+#### 3.1.1.4 Triode Range
 
 在 Triode Range 就变成了压控电阻。  
 <div align = center><img src = ../img/2024-12-06-00-01-02.png width = 500/></div>
 
-### 3.1.5 如何计算 $V_{in1}$ 
+#### 3.1.1.5 如何计算 $V_{in1}$ 
 
-所以 $V_{in1}$ 并非一个绝对的点，是相对 $R_{D}$ 变化的。  
+所以 $V_{in1}$ 并非一个绝对的点，是相对 $R_{D}$ 变化的。 而且大的 $R_D$ 会导致小的 $V_{in1}$ 即放大器的 DC 摆幅变小了。
 
 <div align = center><img src = ../img/2024-12-07-19-23-55.png width = 500/></div>
 
@@ -72,7 +113,7 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 
 <div align = center><img src = ../img/2024-12-21-23-25-00.png width = 500/></div>
 
-### 3.1.6 CS Stage with diode-connected load
+### 3.1.2 Diode-Connected Load
 
 把 GS 端接在一起，MOS 就变成了一个二极管。  
 <div align = center><img src = ../img/2024-12-07-23-08-02.png width = 500/></div>
@@ -80,12 +121,67 @@ Cut off 区和 triode 区放大能力都不好，最好是饱和区。
 分析三部曲：讨论大信号，讨论增益，讨论输入输出电阻。  
 M2 会自适应的调节 $V_S$ 来适应 M1 产生的电流。  
 
-$V_\text{TH2}$ 有衬偏效应，所以是 almost。  
+
+#### 3.1.2.1 大信号分析 
 <div align = center><img src = ../img/2024-12-07-23-12-16.png width = 500/></div>
 
 1. 考虑 $I_1$ 是一个电流源，从有值切换到无值，$V_{out}$ 会上升，并且当 $V_{out} = V_\text{DD} - V_\text{TH2}$ 时，$I_1$ 为 0，但是由于寄生电容 $C_P$ 的存在，当电流切为 0 时，$V_{out}$ 是缓慢上升的。
 2. 然后由于亚阈值电流的存在，所以最终 $V_{out}$ 会上升为 $V_\text{DD}$。
 
+::: tip
+1. 如果用 NMOS 做 M2，要注意 $V_{BS}$，也就是说如果 B 接地就会有体效应。
+2. 另外 $V_{GS}$ 也不确定。所以在这个电路中，M1 是决定性的晶体管，因为它的 $V_{GS}$ 是确定的。
+:::
+
 在本书学习中，不考虑最终亚阈值电流的问题，认为 $V_{out}$ 最大值为 $V_\text{DD} - V_\text{TH2}$。
 <div align = center><img src = ../img/2024-12-07-23-21-06.png width = 500/></div>
-<div align = center><img src = ../img/2024-12-07-23-35-38.png width = 500/></div>
+
+随着 $V_{in}$ 从 0 开始增大，M2 逐渐从截止到饱和。
+理想情况下，$V_{TH1}$ 到 A 点之间曲线应为一条斜线，但是实际情况不能忽略 M2 的体效应和 M1 的沟道长度调制效应，这两者会带来非线性。
+<div align = center><img src = ../img/2025-10-05-20-03-44.png width = 500/></div>
+
+#### 3.1.2.2 小信号增益
+
+这个放大系数的线性已经很好了，如果必须使用开环的放大器，这种 diode-connect MOS 做负载的放大器是理想选择。但是也受到 $\dfrac{1}{1+\eta}$ 的影响，$\eta$ 是体跨导系数，这个系数并不是一个定值，即便不考虑设计，输入电压都会影响这个 $\eta$。
+<div align = center><img src = ../img/2025-10-05-20-06-14.png width = 500/></div>
+
+<div align = center><img src = ../img/2025-10-05-20-17-53.png width = 500/></div>
+
+$g_{m2}$ 是栅跨导，$g_{mb2}$ 是体跨导。
+<div align = center><img src = ../img/2025-10-05-20-21-22.png width = 500/></div>
+
+<div align = center><img src = ../img/2025-10-05-20-25-28.png width = 500/></div>
+
+始终受到体效应的影响。
+<div align = center><img src = ../img/2025-10-05-20-26-54.png width = 500/></div>
+
+使用 PMOS 消除体效应的影响。
+<div align = center><img src = ../img/2025-10-05-20-27-54.png width = 500/></div>
+
+#### 3.1.2.3 输入输出电阻
+
+<div align = center><img src = ../img/2025-10-05-20-29-13.png width = 500/></div>
+
+#### 3.1.2.4 Signal Range
+
+增益 $A_v$ 是大了，但是 $V_{out}$ 只有 0.3V。
+<div align = center><img src = ../img/2025-10-05-20-32-53.png width = 500/></div>
+
+一个重要的电路：
+<div align = center><img src = ../img/2025-10-05-20-40-42.png width = 500/></div>
+
+<div align = center><img src = ../img/2025-10-05-20-42-11.png width = 500/></div>  
+
+并联一个 PMOS。必须是 PMOS 否则会有 $V_{GS}$ 不确定的问题。
+<div align = center><img src = ../img/2025-10-05-20-46-22.png width = 500/></div>
+
+### 3.1.3 Current Source Load
+
+<div align = center><img src = ../img/2025-10-05-20-54-14.png width = 500/></div>
+
+
+<div align = center><img src = ../img/2025-10-05-20-56-56.png width = 500/></div>
+
+都是 CS stage，跟 $I_D$ 的关系却与负载有关。
+用电流源的 CS stage 可以通过降低电流获得高增益，但是会带来 **低速** 和 **高噪声** 的问题。
+<div align = center><img src = ../img/2025-10-05-20-57-29.png width = 500/></div>
