@@ -1,4 +1,4 @@
-# 1 Failure Analysis
+# Failure Analysis
 
 | Analysis Technique 分析方法   | Lateral 平面分辨率 | Signal Depth 穿透深度 | Electrical Range 电性范围 | Detection Limit 分析精度 | Sample Dimension 样品尺寸 | Signal Detected 检测信号 |
 |---------------------------------|--------------------|-----------------------|---------------------------|--------------------------|---------------------------|--------------------------|

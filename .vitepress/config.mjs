@@ -22,11 +22,12 @@ export default defineConfig({
         {
           text: 'Docs Overview',
           items: [
-            // { text: 'Markdown Examples', link: '/markdown-examples' },
-            // { text: 'Runtime API Examples', link: '/api-examples' }
             { text: 'Seminotes', link: 'content/seminotes.md' },
             { text: 'Memory', link: 'content/memory.md' },
-            { text: 'Statistics', link: 'content/statistics.md' }
+            { text: 'Statistics', link: 'content/statistics.md' },
+            { text: 'Failure Analysis', link: 'content/failure_analysis.md' },
+            { text: 'Material Analysis', link: 'content/material_analysis.md' },
+            { text: 'Reliability Analysis', link: 'content/reliability_analysis.md' }
           ]
         }
       ],

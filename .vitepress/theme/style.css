@@ -1,15 +1,15 @@
 :root {
-  --vp-layout-max-width: 1920px;
+  --vp-layout-max-width: 100%;
 }
 
 .VPDoc:not(.has-sidebar) .container {
-  max-width: 1584px !important;
+  max-width: 70% !important;
 }
 
 .VPDoc:not(.has-sidebar) .content {
-  max-width: 1264px !important;
+  max-width: 70% !important;
 }
 
 .VPDoc.has-aside .content-container {
-  max-width: 1168px !important;
-}
+  max-width: 70% !important;
+} 
