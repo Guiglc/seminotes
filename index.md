@@ -48,6 +48,11 @@ hero:
   <a href="/seminotes/content/statistics">Ⅲ Statistics</a>
 </div>
 
+<h2 class="section-title">Lab Technique</h2>
+<div class="custom-hero-actions">
+  <a href="/seminotes/content/failure_analysis">Ⅰ Failure Analysis</a>
+</div>
+
 <h2 class="section-title">Razavi</h2>
 <div class="custom-hero-actions">
   <a href="/seminotes/Razavi/ch2">Ch2. Basic Concept</a>
