@@ -51,6 +51,8 @@ hero:
 <h2 class="section-title">Lab Technique</h2>
 <div class="custom-hero-actions">
   <a href="/seminotes/content/failure_analysis">Ⅰ Failure Analysis</a>
+  <a href="/seminotes/content/material_analysis">Ⅱ Material Analysis</a>
+  <a href="/seminotes/content/reliability_analysis">Ⅲ Reliability Analysis</a>
 </div>
 
 <h2 class="section-title">Razavi</h2>
