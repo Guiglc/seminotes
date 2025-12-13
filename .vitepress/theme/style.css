@@ -3,13 +3,13 @@
 }
 
 .VPDoc:not(.has-sidebar) .container {
-  max-width: 70% !important;
+  max-width: 80% !important;
 }
 
 .VPDoc:not(.has-sidebar) .content {
-  max-width: 70% !important;
+  max-width: 50% !important;
 }
 
 .VPDoc.has-aside .content-container {
-  max-width: 70% !important;
+  max-width: 80% !important;
 } 
