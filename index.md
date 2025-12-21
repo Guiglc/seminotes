@@ -46,13 +46,14 @@ hero:
   <a href="/seminotes/content/seminotes">Ⅰ Seminotes</a>
   <a href="/seminotes/content/memory">Ⅱ Memory</a>
   <a href="/seminotes/content/statistics">Ⅲ Statistics</a>
+  <a href="/seminotes/content/T5833">Ⅳ T5833 Notes</a>
 </div>
 
 <h2 class="section-title">Lab Technique</h2>
 <div class="custom-hero-actions">
-  <a href="/seminotes/content/failure_analysis">Ⅰ Failure Analysis</a>
-  <a href="/seminotes/content/material_analysis">Ⅱ Material Analysis</a>
-  <a href="/seminotes/content/reliability_analysis">Ⅲ Reliability Analysis</a>
+  <a href="/seminotes/lab/failure_analysis">Ⅰ Failure Analysis</a>
+  <a href="/seminotes/lab/material_analysis">Ⅱ Material Analysis</a>
+  <a href="/seminotes/lab/reliability_analysis">Ⅲ Reliability Analysis</a>
 </div>
 
 <h2 class="section-title">Razavi</h2>
@@ -64,10 +65,4 @@ hero:
   <a href="/seminotes/Razavi/ch6">Ch6.</a>
   <a href="/seminotes/Razavi/ch7">Ch7.</a>
   <a href="/seminotes/Razavi/ch8">Ch8.</a>
-</div>
-
-
-<h2 class="section-title">PDF</h2>
-<div class="custom-hero-actions">
-  <a href="/seminotes/pdf-viewer" class="button">查看 PDF 示例</a>
 </div>

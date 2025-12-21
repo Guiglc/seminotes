@@ -25,6 +25,15 @@ export default defineConfig({
             { text: 'Seminotes', link: 'content/seminotes.md' },
             { text: 'Memory', link: 'content/memory.md' },
             { text: 'Statistics', link: 'content/statistics.md' },
+            { text: 'T5833', link: 'content/T5833.md' },
+          ]
+        }
+      ],
+
+      '/lab/': [
+        {
+          text: 'Docs Overview',
+          items: [
             { text: 'Failure Analysis', link: 'content/failure_analysis.md' },
             { text: 'Material Analysis', link: 'content/material_analysis.md' },
             { text: 'Reliability Analysis', link: 'content/reliability_analysis.md' }
@@ -34,7 +43,7 @@ export default defineConfig({
 
       '/Razavi/': [
         {
-          text: 'Docs Overview',
+          text: 'Razavi Notes',
           items: [
             // { text: 'Markdown Examples', link: '/markdown-examples' },
             // { text: 'Runtime API Examples', link: '/api-examples' }
