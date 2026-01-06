@@ -34,9 +34,9 @@ export default defineConfig({
         {
           text: 'Docs Overview',
           items: [
-            { text: 'Failure Analysis', link: 'content/failure_analysis.md' },
-            { text: 'Material Analysis', link: 'content/material_analysis.md' },
-            { text: 'Reliability Analysis', link: 'content/reliability_analysis.md' }
+            { text: 'Failure Analysis', link: 'lab/failure_analysis.md' },
+            { text: 'Material Analysis', link: 'lab/material_analysis.md' },
+            { text: 'Reliability Analysis', link: 'lab/reliability_analysis.md' }
           ]
         }
       ],
