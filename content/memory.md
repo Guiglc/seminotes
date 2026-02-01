@@ -1,5 +1,34 @@
 # Memory
 
+## 0. Memory
+
+**Dynamic RAM (DRAM)**
+1. Highest density
+2. Low speed access time (about 10ns)
+3. Information is stored as the charge of a capacitor and must be refreshed regularly  
+
+**Static RAM (SRAM)**
+
+1. The fastest (about 1ns)
+2. The information is stored in latches made with looped inverters
+
+<div align = center><img src = ../img/2026-01-10-18-23-03.png width = 500/></div>
+
+<div align = center><img src = ../img/2026-01-10-18-29-00.png width = 500/></div>
+
+<div align = center><img src = ../img/2026-01-10-18-29-17.png width = 500/></div>
+
+**Read Only Memory (ROM)**
+1. Information is stored by the presence or absence of a transistor during manufacture
+2. The information persists even if the circuit is not powered
+
+**Erasable and Programmable Read Only Memory (EPROMs)**
+1. Programmable in the application
+2. Fully erasable by applying ultraviolet rays
+
+**Electrically Erasable and Programmable RO (EEPROM, FLASH)**  
+1. Data can be selectively erased by electrical means
+
 ## 1. NAND
 
 ::: danger
